@@ -15,12 +15,18 @@ import {DepartmentsComponent} from './departments/departments.component'
 import {ContractsComponent} from './contracts/contracts.component'
 
 
+import {MdCardModule} from '@angular2-material/card'
+import {MdButtonModule} from '@angular2-material/button'
+import {MdIconModule} from '@angular2-material/icon'
+
+import {MdIconRegistry} from '@angular2-material/icon'
+
 //routing
 import {routing} from './app.routes';
 
 @NgModule({
   imports:      [ 
-    BrowserModule,
+    BrowserModule, MdCardModule, MdButtonModule, MdIconModule,
     FormsModule,
     HttpModule,
     routing
@@ -32,6 +38,8 @@ import {routing} from './app.routes';
     DepartmentsComponent,
     ContractsComponent
     ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  providers:[MdIconRegistry]
 })
+
 export class AppModule { }

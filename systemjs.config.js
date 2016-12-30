@@ -25,7 +25,11 @@
 
       // other libraries
       'rxjs':                      'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+      '@angular2-material/core':'npm:@angular2-material/core/core.umd.js',
+      '@angular2-material/card':'npm:@angular2-material/card/card.umd.js',
+      '@angular2-material/button':'npm:@angular2-material/button/button.umd.js',
+      '@angular2-material/icon':'npm:@angular2-material/icon/icon.umd.js',
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
