@@ -1,1 +1,7 @@
-<h2>List of contracts will be displayed here </h2>
+<h2>Contracts </h2>
+
+<div class="row text-center">
+    <div class="col-md-3 col-sm-6" *ngFor="let contract of contracts">
+        <md-card> {{contract.name}} {{contract.startDate}} {{contract.endDate}} {{contract.amount}} {{contract.employee.firstName}} </md-card> 
+    </div>
+</div>

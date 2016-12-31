@@ -1,1 +1,17 @@
-<h2>List of departments will be displayed here <h2>
+<h4>Departments <h4>
+
+<md-nav-list *ngFor="let department of departments">
+   <md-card>
+    <md-card-subtitle>Department</md-card-subtitle>
+    <md-card-title>{{department.name}}</md-card-title>   
+    <md-card-content>
+            <p>{{department.description}}</p>
+    </md-card-content>
+    <md-card-actions>
+            <button md-button> Edit </button>
+            <button md-button> Show Employees </button>
+    </md-card-actions>
+    </md-card>
+
+</md-nav-list>
+

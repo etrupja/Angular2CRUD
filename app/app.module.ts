@@ -37,6 +37,10 @@ import {MdTooltipModule} from '@angular2-material/tooltip';
 
 import {MdIconRegistry} from '@angular2-material/icon'
 
+//Importing my services
+import { DataService } from './shared/data_services/data.service';
+import { ConfigService } from './shared/api_settings/config.service';
+
 //routing
 import {routing} from './app.routes';
 
@@ -57,7 +61,7 @@ import {routing} from './app.routes';
     ContractsComponent
     ],
   bootstrap:    [ AppComponent ],
-  providers:[MdIconRegistry]
+  providers:[MdIconRegistry, DataService,ConfigService]
 })
 
 export class AppModule { }

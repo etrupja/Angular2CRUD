@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../shared/data_services/data.service';
+import { IEmployee } from '../shared/interfaces';
 
 @Component({
     moduleId: module.id,
@@ -6,7 +8,19 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'employees.component.html'
 })
 export class EmployeesComponent implements OnInit {
-    constructor() { }
+    
+    employees: IEmployee[];
 
-    ngOnInit() { }
+    constructor(private dataService: DataService) { }
+
+    ngOnInit() { 
+        this.dataService.getEmployees().subscribe(
+          (employees:IEmployee[]) => {
+            this.employees = employees;
+        },
+        error => {
+            console.log('Failed to load employees.'+error);
+        });
+
+    }
 }
