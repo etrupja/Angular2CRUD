@@ -1,5 +1,7 @@
 <h4>Departments <h4>
 
+
+
 <md-nav-list *ngFor="let department of departments">
    <md-card>
     <md-card-subtitle>Department</md-card-subtitle>
@@ -8,9 +10,10 @@
             <p>{{department.description}}</p>
     </md-card-content>
     <md-card-actions>
-            <button md-button> Edit </button>
-            <button md-button> Show Employees </button>
+            <a md-button class="btn"><i class="material-icons left">mode_edit</i>Edit</a>
+            <a md-button class="btn" [routerLink]="['/department-employees',department.id]" ><i class="material-icons left">recent_actors</i>Show Employees</a>
     </md-card-actions>
+    
     </md-card>
 
 </md-nav-list>

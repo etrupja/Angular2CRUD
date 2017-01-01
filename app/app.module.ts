@@ -11,9 +11,11 @@ import { AppComponent }  from './app.component';
 //main components
 import {HomeComponent} from './home/home.component'
 import {EmployeesComponent} from './employees/employees.component'
-import {DepartmentsComponent} from './departments/departments.component'
-import {ContractsComponent} from './contracts/contracts.component'
 
+import {DepartmentsComponent} from './departments/departments.component'
+import {DepartmentEmployeesComponent} from './departments/department-employees.component'
+
+import {ContractsComponent} from './contracts/contracts.component'
 
 import {MdCardModule} from '@angular2-material/card'
 import {MdButtonModule} from '@angular2-material/button'
@@ -57,7 +59,7 @@ import {routing} from './app.routes';
     AppComponent,
     HomeComponent,
     EmployeesComponent,
-    DepartmentsComponent,
+    DepartmentsComponent,DepartmentEmployeesComponent,
     ContractsComponent
     ],
   bootstrap:    [ AppComponent ],

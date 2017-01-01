@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IDepartment} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
+import {DepartmentEmployeesComponent} from './department-details.component';
 
 
 @Component({

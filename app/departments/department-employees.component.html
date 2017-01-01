@@ -1,4 +1,6 @@
-<h4>Employees <h4>
+<h4>Employees<h4>
+<a md-button class="btn" [routerLink]="['/home']"><i class="material-icons left">home</i>Home</a>
+<a md-button class="btn" [routerLink]="['/departments']"><i class="material-icons left">keyboard_return</i>Back</a>
 
 <table class="striped highlight centered responsive-table">
   <thead>
@@ -8,7 +10,6 @@
         <th data-field="age">Age</th>
         <th data-field="birthDate">Birthdate</th>
         <th data-field="jobPosition">Job Position</th>
-        <th data-field="departmentName">Department</th>
     </tr>
   </thead>
 
@@ -19,7 +20,6 @@
       <td>{{employee.age}}</td>
       <td>{{employee.birthDate}}</td>
       <td>{{employee.jobPosition}}</td>
-      <td>{{employee.department.name}}</td>
     </tr>
   </tbody>
 </table>
