@@ -10,7 +10,8 @@ import 'rxjs/add/operator/catch';
 import { 
     IEmployee, 
     IDepartment, 
-    IContract
+    IContract,
+    Department
                 } from '../interfaces';
 import { ConfigService } from '../api_settings/config.service';
 
@@ -69,10 +70,11 @@ export class DataService {
     }
 
 //updates a department
-    updateDepartment(department: IDepartment): Observable<void> {
+    updateDepartment(department: Department): Observable<void> {
 
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Origin', '*');
 
         return this.http.put(this._baseUrl + 'department/' + department.id, JSON.stringify(department), {
             headers: headers

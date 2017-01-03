@@ -14,6 +14,7 @@ import {EmployeesComponent} from './employees/employees.component'
 
 import {DepartmentsComponent} from './departments/departments.component'
 import {DepartmentEmployeesComponent} from './departments/department-employees.component'
+import {DepartmentEditComponent} from './departments/department-edit.component'
 
 import {ContractsComponent} from './contracts/contracts.component'
 
@@ -59,7 +60,7 @@ import {routing} from './app.routes';
     AppComponent,
     HomeComponent,
     EmployeesComponent,
-    DepartmentsComponent,DepartmentEmployeesComponent,
+    DepartmentsComponent,DepartmentEmployeesComponent,DepartmentEditComponent,
     ContractsComponent
     ],
   bootstrap:    [ AppComponent ],

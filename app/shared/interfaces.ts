@@ -5,6 +5,15 @@ export interface IDepartment {
     employees: number;
 }
 
+export class Department {
+    
+    constructor(
+    public id: number,
+    public name: string,
+    public description:string
+  ) {  }
+}
+
 export interface IEmployee {
      id: number;
      lastName: string;
