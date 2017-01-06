@@ -2,8 +2,13 @@
 
 <div class="row">
                 <md-card class="z-depth-3" *ngFor="let department of departments">
-                        <md-card-subtitle>Department</md-card-subtitle>
-                        <md-card-title>{{department.name}}</md-card-title>   
+                        <md-card-subtitle>Department </md-card-subtitle>
+                        <md-card-title>
+                                {{department.name}} 
+                                <a (click)="removeDepartment(department.id)">
+                                        <i class="small material-icons right">delete</i>
+                                </a>        
+                        </md-card-title>   
                         <md-card-content>
                                 <p>{{department.description}}</p>
                         </md-card-content>

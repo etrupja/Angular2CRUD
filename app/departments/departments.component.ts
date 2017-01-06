@@ -22,4 +22,29 @@ export class DepartmentsComponent implements OnInit {
             console.log('Failed to load departments '+error);
         });
      }
+
+     removeDepartment(id:number){
+        var deleteConfirmation = confirm("Do you want to delete the department");
+        //If he does not want to delete the department
+        if(deleteConfirmation == false) { 
+            console.log('Department is not deleted. ');
+            return;
+        }
+
+        this.dataService.deleteDepartment(id)
+            .subscribe(() => {
+                console.log('Department was deleted successfully. ');
+
+                //Reload Department after one is deleted
+                this.dataService.getDepartments().subscribe((departments:IDepartment[]) => {
+                        this.departments = departments;
+                    },
+                    error => {
+                        console.log('Failed to load departments '+error);
+                    });
+            },
+            error => {
+                console.log('Failed while trying to update the department. '+error);
+            });
+     }
 }
