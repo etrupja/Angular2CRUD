@@ -31,9 +31,9 @@ export class DepartmentNewComponent implements OnInit {
 
          this.dataService.createDepartment(this.department)
          .subscribe(() => {
-                console.log('Department '+this.department.name+' was craeted successfully. ');
+                console.log('Department '+this.department.name+' was created successfully. ');
                 this.departmentCreated = true;
-                this.info = 'Department '+this.department.name+' was craeted successfully. ';
+                this.info = 'Department '+this.department.name+' was created successfully. ';
             },
             error => {
                 

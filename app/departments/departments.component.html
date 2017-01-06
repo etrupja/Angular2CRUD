@@ -1,29 +1,33 @@
 <h4>Departments <h4>
 
 <div class="row">
-                <md-card class="z-depth-3" *ngFor="let department of departments">
-                        <md-card-subtitle>Department </md-card-subtitle>
-                        <md-card-title>
-                                {{department.name}} 
-                                <a (click)="removeDepartment(department.id)">
-                                        <i class="small material-icons right">delete</i>
-                                </a>        
-                        </md-card-title>   
-                        <md-card-content>
-                                <p>{{department.description}}</p>
-                        </md-card-content>
-                        <md-card-actions>
-                                <a md-button class="btn" [routerLink]="['/department-edit',department.id]"><i class="material-icons left">mode_edit</i>Edit</a>
-                                <a md-button class="btn" [routerLink]="['/department-employees',department.id]" ><i class="material-icons left">recent_actors</i>Show Employees</a>
-                        </md-card-actions>
-                </md-card>
+        <div class="col s12 m6" *ngFor="let department of departments">
+                <div class="card">
+                <div class="card-title">
+                        {{department.name}}
+                        <a (click)="removeDepartment(department.id)"><i class="small material-icons right">delete</i>
+                                        </a>
+                </div>
+                <div class="card-content">
+                        <p>
+                                {{department.description}}
+                        </p>
+                </div>
+                <div class="card-action">
+                        <a md-button class="btn" [routerLink]="['/department-edit',department.id]"><i class="material-icons left">mode_edit</i>Edit</a>
+                        <a md-button class="btn" [routerLink]="['/department-employees',department.id]" ><i class="material-icons left">recent_actors</i>Show Employees</a>
+                </div>
+                </div>
+        </div>
 </div>
+
 
 <div class="fixed-action-btn">
     <a [routerLink]="['/department-new']"  class="btn-floating btn-large blue">
       <i class="large material-icons">add</i>
     </a>
 </div>
+
    
 
 
