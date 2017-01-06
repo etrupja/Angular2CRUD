@@ -1,18 +1,17 @@
 export interface IDepartment {
-    id: number;
+    id?: number;
     name: string;
     description:string;
-    employees: number;
+    employees?: number;
 }
 
 export class Department {
-    
-    constructor(
-    public id: number,
-    public name: string,
-    public description:string
-  ) {  }
+    id: number;
+    name: string;
+    description:string;
+  
 }
+
 
 export interface IEmployee {
      id: number;

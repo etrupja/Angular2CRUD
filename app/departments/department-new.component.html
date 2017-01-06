@@ -1,0 +1,28 @@
+
+<div class="container">
+    <h5>Create new department</h5>
+    <form #form="ngForm" class="col s12" novalidate>
+      <div class="row">
+        <div class="input-field col s12">
+          <input [disabled]="departmentCreated" id="name" type="text" class="form-control validate" name="name" [(ngModel)]="name" required>
+          <label class="active" for="name">Department name</label>
+        </div>
+      </div>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <input [disabled]="departmentCreated" id="description" active type="text" class="form-control validate" name="description" [(ngModel)]="description" required>
+            <label  class="active" for="description">Department description</label>            
+        </div>
+    </div>
+        
+    <div class="row">
+
+            <div class="card-panel teal lighten-2 col s6 m6 l6" *ngIf="departmentCreated" >{{info}}</div>
+            <button [disabled]="departmentCreated" class="btn waves-effect waves-light right" type="submit" name="action" (click)="newDepartment(name,description)">Create Department
+                <i class="material-icons right">send</i>
+            </button>
+            <a md-button class="btn right" [routerLink]="['/departments']"><i class="material-icons left">keyboard_return</i>Back</a>
+    </div>
+    </form>
+</div>

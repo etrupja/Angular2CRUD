@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 
-import { NgModule }      from '@angular/core';
+import { NgModule }      from '@angular/core'; //Used for module component
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule }    from '@angular/http';
@@ -15,6 +15,7 @@ import {EmployeesComponent} from './employees/employees.component'
 import {DepartmentsComponent} from './departments/departments.component'
 import {DepartmentEmployeesComponent} from './departments/department-employees.component'
 import {DepartmentEditComponent} from './departments/department-edit.component'
+import {DepartmentNewComponent} from './departments/department-new.component'
 
 import {ContractsComponent} from './contracts/contracts.component'
 
@@ -36,9 +37,7 @@ import {MdSlideToggleModule} from '@angular2-material/slide-toggle';
 import {MdTabsModule} from '@angular2-material/tabs';
 import {MdToolbarModule} from '@angular2-material/toolbar';
 import {MdTooltipModule} from '@angular2-material/tooltip';
-
-
-import {MdIconRegistry} from '@angular2-material/icon'
+import {MdIconRegistry} from '@angular2-material/icon';
 
 //Importing my services
 import { DataService } from './shared/data_services/data.service';
@@ -60,7 +59,7 @@ import {routing} from './app.routes';
     AppComponent,
     HomeComponent,
     EmployeesComponent,
-    DepartmentsComponent,DepartmentEmployeesComponent,DepartmentEditComponent,
+    DepartmentsComponent,DepartmentEmployeesComponent,DepartmentEditComponent,DepartmentNewComponent,
     ContractsComponent
     ],
   bootstrap:    [ AppComponent ],

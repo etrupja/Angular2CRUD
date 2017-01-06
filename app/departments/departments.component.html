@@ -1,20 +1,26 @@
 <h4>Departments <h4>
 
+<div class="row">
+                <md-card class="z-depth-3" *ngFor="let department of departments">
+                        <md-card-subtitle>Department</md-card-subtitle>
+                        <md-card-title>{{department.name}}</md-card-title>   
+                        <md-card-content>
+                                <p>{{department.description}}</p>
+                        </md-card-content>
+                        <md-card-actions>
+                                <a md-button class="btn" [routerLink]="['/department-edit',department.id]"><i class="material-icons left">mode_edit</i>Edit</a>
+                                <a md-button class="btn" [routerLink]="['/department-employees',department.id]" ><i class="material-icons left">recent_actors</i>Show Employees</a>
+                        </md-card-actions>
+                </md-card>
+</div>
+
+<div class="fixed-action-btn">
+    <a [routerLink]="['/department-new']"  class="btn-floating btn-large blue">
+      <i class="large material-icons">add</i>
+    </a>
+</div>
+   
 
 
-<md-nav-list *ngFor="let department of departments">
-   <md-card>
-    <md-card-subtitle>Department</md-card-subtitle>
-    <md-card-title>{{department.name}}</md-card-title>   
-    <md-card-content>
-            <p>{{department.description}}</p>
-    </md-card-content>
-    <md-card-actions>
-            <a md-button class="btn" [routerLink]="['/department-edit',department.id]"><i class="material-icons left">mode_edit</i>Edit</a>
-            <a md-button class="btn" [routerLink]="['/department-employees',department.id]" ><i class="material-icons left">recent_actors</i>Show Employees</a>
-    </md-card-actions>
-    
-    </md-card>
 
-</md-nav-list>
-
+  
