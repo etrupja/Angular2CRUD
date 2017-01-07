@@ -14,10 +14,10 @@
 
   <tbody>
     <tr *ngFor="let employee of employees">
-      <td>{{employee.firstName}}</td>
+      <td contenteditable='true'>{{employee.firstName}}</td>
       <td>{{employee.lastName}}</td>
       <td>{{employee.age}}</td>
-      <td>{{employee.birthDate}}</td>
+      <td>{{employee.birthDate | date }}</td>
       <td>{{employee.jobPosition}}</td>
       <td>{{employee.department.name}}</td>
     </tr>
