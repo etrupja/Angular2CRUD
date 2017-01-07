@@ -6,7 +6,7 @@
             {{contract.name}} 
             {{contract.startDate | date }}
             {{contract.endDate | date}}
-            {{contract.amount}} 
+            {{contract.amount | currency:'EUR':true }} 
             {{contract.employee.firstName}} </md-card> 
     </div>
 </div>
