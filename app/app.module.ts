@@ -11,6 +11,7 @@ import { AppComponent }  from './app.component';
 //main components
 import {HomeComponent} from './home/home.component'
 import {EmployeesComponent} from './employees/employees.component'
+import {EmployeeEditComponent} from './employees/employee-edit.component'
 
 import {DepartmentsComponent} from './departments/departments.component'
 import {DepartmentEmployeesComponent} from './departments/department-employees.component'
@@ -58,7 +59,7 @@ import {routing} from './app.routes';
   declarations: [ 
     AppComponent,
     HomeComponent,
-    EmployeesComponent,
+    EmployeesComponent,EmployeeEditComponent,
     DepartmentsComponent,DepartmentEmployeesComponent,DepartmentEditComponent,DepartmentNewComponent,
     ContractsComponent
     ],

@@ -10,6 +10,8 @@ import { DepartmentEditComponent } from './departments/department-edit.component
 import { DepartmentNewComponent } from './departments/department-new.component';
 
 import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeEditComponent } from './employees/employee-edit.component';
+
 import {ContractsComponent} from './contracts/contracts.component';
  
 const appRoutes: Routes = [
@@ -19,6 +21,7 @@ const appRoutes: Routes = [
     { path: 'department-edit/:id', component: DepartmentEditComponent },
     { path: 'department-new', component: DepartmentNewComponent },
     { path: 'employees', component: EmployeesComponent },
+    { path: 'employee-edit/:id', component: EmployeeEditComponent },
     { path: 'contracts', component: ContractsComponent },
     { path: '', component: HomeComponent }
 ];

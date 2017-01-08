@@ -23,4 +23,29 @@ export class EmployeesComponent implements OnInit {
         });
 
     }
+
+    removeEmployee(id:number){
+        var deleteConfirmation = confirm("Do you want to delete the employee");
+        //If he does not want to delete the employee
+        if(deleteConfirmation == false) { 
+            console.log('Employee is not deleted. ');
+            return;
+        }
+
+        this.dataService.deleteEmployee(id)
+            .subscribe(() => {
+                console.log('Employee was deleted successfully. ');
+
+                //Reload Employees after one is deleted
+                this.dataService.getEmployees().subscribe((employees:IEmployee[]) => {
+                        this.employees = employees;
+                    },
+                    error => {
+                        console.log('Failed to load employees '+error);
+                    });
+            },
+            error => {
+                console.log('Failed while trying to delete the employee. '+error);
+            });
+     }
 }

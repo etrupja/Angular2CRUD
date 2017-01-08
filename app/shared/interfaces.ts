@@ -25,6 +25,16 @@ export interface IEmployee {
      contracts: number[];
 }
 
+export class Employee {
+     id: number;
+     lastName: string;
+     firstName: string;
+     age: number;
+     birthdate: Date;
+     jobPosition: string;
+     department:string;
+}
+
 export interface IContract{
     id:number;
     name:string;

@@ -14,7 +14,7 @@ export class DepartmentEditComponent implements OnInit {
      name:string;
      description: string;
 
-    department:any;
+    department:Department;
 
      
     
@@ -34,7 +34,8 @@ export class DepartmentEditComponent implements OnInit {
      }
 
      updateDepartment(){
-        this.department = new Department(this.id, this.name,this.description);
+        this.department = {id:this.id, name:this.name,description:this.description};
+
          this.dataService.updateDepartment(this.department)
          .subscribe(() => {
                 console.log('Department was updated successfully. ');

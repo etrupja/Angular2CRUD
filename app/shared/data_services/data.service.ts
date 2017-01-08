@@ -11,7 +11,8 @@ import {
     IEmployee, 
     IDepartment, 
     IContract,
-    Department
+    Department,
+    Employee
                 } from '../interfaces';
 import { ConfigService } from '../api_settings/config.service';
 
@@ -112,7 +113,30 @@ getEmployee(id: number): Observable<IEmployee> {
             .catch(this.handleError);
     }
 
+//updates an employee
+    updateEmployee(employee: Employee): Observable<void> {
 
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Origin', '*');
+
+        return this.http.put(this._baseUrl + 'employee/' + employee.id, JSON.stringify(employee), {
+            headers: headers
+        })
+            .map((res: Response) => {
+                return;
+            })
+            .catch(this.handleError);
+    }
+
+//delete department
+    deleteEmployee(id: number): Observable<void> {
+        return this.http.delete(this._baseUrl + 'employee/' + id)
+            .map((res: Response) => {
+                return;
+            })
+            .catch(this.handleError);
+    }
 
 //************************************************************   CONTRACT SERVICES ************************************************************************ /
 //get all contracts

@@ -1,0 +1,51 @@
+
+<div class="row">
+    <h5>Edit {{firstName}} {{lastName}} employee</h5>
+    <form #form="ngForm" class="col s12" novalidate>
+      <div class="row">
+        <div class="input-field col s6 m6">
+          <input id="firstName" type="text" class="form-control validate" name="firstName" [(ngModel)]="firstName">
+          <label class="active" for="firstName">Employee's First Name</label>
+        </div>
+
+        <div class="input-field col s6 m6">
+          <input id="lastName" type="text" class="form-control validate" name="lastName" [(ngModel)]="lastName">
+          <label class="active" for="lastName">Employee's Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="age" type="number" class="form-control validate" name="age" [(ngModel)]="age">
+          <label class="active" for="age">Employee's Age</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="birthdate" type="date" class="form-control validate" name="birthdate" [(ngModel)]="birthdate">
+          <label class="active" for="birthdate">Employee's Birthdate</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="jobPosition" type="text" class="form-control validate" name="jobPosition" [(ngModel)]="jobPosition">
+          <label class="active" for="jobPosition">Employee's Job Position</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="department" type="text" class="form-control validate" name="department" [(ngModel)]="department">
+          <label class="active" for="department">Employee's Department</label>
+        </div>
+      </div>
+
+    <div class="row">
+            <button class="btn waves-effect waves-light right" type="submit" name="action" (click)="updateEmployee()">Save Changes
+                <i class="material-icons right">send</i>
+            </button>
+            <a md-button class="btn right" [routerLink]="['/employees']"><i class="material-icons left">keyboard_return</i>Back</a>
+    </div>
+    </form>
+  </div>
