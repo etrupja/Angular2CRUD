@@ -14,15 +14,15 @@ export class Department {
 
 
 export interface IEmployee {
-     id: number;
+     id?: number;
      lastName: string;
      firstName: string;
      age: number;
-     birthdate: Date;
+     birthDate: Date;
      jobPosition: string;
      departmentId:number;
-     department:string;
-     contracts: number[];
+     department?:string;
+     contracts?: number[];
 }
 
 export class Employee {
@@ -43,6 +43,16 @@ export interface IContract{
     amount:number;
     employeeId:number;
     employee:string
+}
+
+
+export class DropDown{
+    public value:number;
+    public label:string;
+    constructor(value: number, label: string) {
+        this.value = value;
+        this.label = label;
+    }
 }
 
 

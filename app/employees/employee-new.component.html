@@ -1,0 +1,57 @@
+<div class="container">
+    <h5>Create new employee</h5>
+    <form #form="ngForm" class="col s12" novalidate>
+      <div class="row">
+        <div class="input-field col s6 m6">
+          <input [disabled]="employeeCreated" id="firstName" type="text" class="form-control validate" name="firstName" [(ngModel)]="firstName" required>
+          <label class="active" for="firstName">First Name</label>
+        </div>
+        <div class="input-field col s6 m6">
+          <input [disabled]="employeeCreated" id="lastName" type="text" class="form-control validate" name="lastName" [(ngModel)]="lastName" required>
+          <label class="active" for="lastName">Last Name</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6 m6">
+                        <ng-select 
+                            placeholder="Select one of the positions"
+                            [ngStyle]="{padding:'4px'}"
+                            (selected)="selectedJob($event)"
+                            [options]="jobPositions">
+                        </ng-select>
+                    <label  class="active" for="jobPosition">Job Position</label>            
+        </div>
+        <div class="input-field col s6 m6">
+            <ng-select 
+                            placeholder="Select one of the departments"
+                            [ngStyle]="{padding:'4px'}"
+                            (selected)="selectedDepartment($event)"
+                            [options]="departments">
+                        </ng-select>
+            <label  class="active" for="department">Department</label>            
+        </div>
+        
+
+        
+    </div>
+    <div class="row">
+        <div class="input-field col s6 m6">
+            <input [disabled]="employeeCreated" id="birthdate" active type="date" class="form-control validate" name="birthdate" [(ngModel)]="birthdate" required>
+            <label  class="active" for="birthdate">Birth date</label>            
+        </div>
+        <div class="input-field col s6 m6">
+            <input [disabled]="employeeCreated" id="age" active type="text" class="form-control validate" name="age" [(ngModel)]="age" required>
+            <label  class="active" for="age">Age</label>            
+        </div>
+    </div>
+        
+    <div class="row">
+            <div class="card-panel teal lighten-2 col s6 m6 l6" *ngIf="employeeCreated" >{{info}}</div>
+            <button [disabled]="employeeCreated" class="btn waves-effect waves-light right" type="submit" name="action" (click)="newEmployee()">Create Department
+                <i class="material-icons right">send</i>
+            </button>
+            <a md-button class="btn right" [routerLink]="['/employees']"><i class="material-icons left">keyboard_return</i>Back</a>
+        </div>
+    </form>
+</div>

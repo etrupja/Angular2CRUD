@@ -113,6 +113,23 @@ getEmployee(id: number): Observable<IEmployee> {
             .catch(this.handleError);
     }
 
+    //create a new Employee
+createEmployee(employee: IEmployee): Observable<IEmployee> {
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(this._baseUrl + 'employee/', JSON.stringify(employee), {
+        headers: headers
+    })
+        .map((res: Response) => {
+                alert(res.json());
+            
+            return res.json();
+        })
+        .catch(this.handleError);
+}
+
 //updates an employee
     updateEmployee(employee: Employee): Observable<void> {
 

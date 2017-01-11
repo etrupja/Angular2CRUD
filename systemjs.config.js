@@ -48,6 +48,10 @@
       '@angular2-material/toolbar':'npm:@angular2-material/toolbar/toolbar.umd.js',
       '@angular2-material/tooltip':'npm:@angular2-material/tooltip/tooltip.umd.js',
 
+
+      //Select module
+      'angular2-select': 'node_modules/angular2-select'
+
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -57,6 +61,10 @@
       },
       rxjs: {
         defaultExtension: 'js'
+      },
+      'angular2-select': {
+          main: 'index.js',
+          defaultExtension: 'js'
       }
     }
   });

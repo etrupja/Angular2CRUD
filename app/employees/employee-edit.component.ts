@@ -20,12 +20,11 @@ export class EmployeeEditComponent implements OnInit {
 
      employee:Employee; 
 
-     
-    
     constructor(private dataService: DataService,
                 private route: ActivatedRoute) { }
 
     ngOnInit() {
+
         this.id = +this.route.snapshot.params['id'];
         this.dataService.getEmployee(this.id).subscribe((employee:IEmployee) => {
 

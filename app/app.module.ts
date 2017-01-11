@@ -12,6 +12,7 @@ import { AppComponent }  from './app.component';
 import {HomeComponent} from './home/home.component'
 import {EmployeesComponent} from './employees/employees.component'
 import {EmployeeEditComponent} from './employees/employee-edit.component'
+import {EmployeeNewComponent} from './employees/employee-new.component'
 
 import {DepartmentsComponent} from './departments/departments.component'
 import {DepartmentEmployeesComponent} from './departments/department-employees.component'
@@ -40,6 +41,9 @@ import {MdToolbarModule} from '@angular2-material/toolbar';
 import {MdTooltipModule} from '@angular2-material/tooltip';
 import {MdIconRegistry} from '@angular2-material/icon';
 
+//Select module
+import {SelectModule} from 'angular2-select';
+
 //Importing my services
 import { DataService } from './shared/data_services/data.service';
 import { ConfigService } from './shared/api_settings/config.service';
@@ -52,14 +56,14 @@ import {routing} from './app.routes';
     BrowserModule, 
     MdCardModule, MdButtonModule, MdIconModule,MdMenuModule,MdButtonToggleModule,MdCheckboxModule,MdGridListModule,MdInputModule,MdListModule,MdProgressBarModule,
     MdProgressCircleModule,MdRadioModule,MdSidenavModule,MdSliderModule,MdSlideToggleModule,MdTabsModule,MdToolbarModule,MdTooltipModule,
-    FormsModule,
+    FormsModule,SelectModule,
     HttpModule,
     routing
    ],
   declarations: [ 
     AppComponent,
     HomeComponent,
-    EmployeesComponent,EmployeeEditComponent,
+    EmployeesComponent,EmployeeEditComponent,EmployeeNewComponent,
     DepartmentsComponent,DepartmentEmployeesComponent,DepartmentEditComponent,DepartmentNewComponent,
     ContractsComponent
     ],
