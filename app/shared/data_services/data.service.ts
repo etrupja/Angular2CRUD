@@ -131,7 +131,7 @@ createEmployee(employee: IEmployee): Observable<IEmployee> {
 }
 
 //updates an employee
-    updateEmployee(employee: Employee): Observable<void> {
+    updateEmployee(employee: IEmployee): Observable<void> {
 
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');

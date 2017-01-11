@@ -30,7 +30,7 @@ export class Employee {
      lastName: string;
      firstName: string;
      age: number;
-     birthdate: Date;
+     birthDate: Date;
      jobPosition: string;
      department:string;
 }

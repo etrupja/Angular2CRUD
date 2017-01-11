@@ -15,28 +15,40 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="age" type="number" class="form-control validate" name="age" [(ngModel)]="age">
+          <input id="age" type="number" class="form-control validate" name="age" [(ngModel)]="age"  >
           <label class="active" for="age">Employee's Age</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="birthdate" type="date" class="form-control validate" name="birthdate" [(ngModel)]="birthdate">
-          <label class="active" for="birthdate">Employee's Birthdate</label>
+          <input id="birthDate" type="date" class="form-control validate" name="birthDate"  [value]="birthDate | date:'yyyy-MM-dd'" (input)="birthDate=parseDate($event.target.value)">
+          <label class="active" for="birthDate">Employee's Birthdate</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="jobPosition" type="text" class="form-control validate" name="jobPosition" [(ngModel)]="jobPosition">
+          <!--<input id="jobPosition" type="text" class="form-control validate" name="jobPosition" [(ngModel)]="jobPosition">-->
+          <ng-select 
+                placeholder="Select one of the positions"
+                [ngStyle]="{padding:'4px'}"
+                (selected)="selectedJob($event)"
+                [options]="jobPositions">
+            </ng-select>
           <label class="active" for="jobPosition">Employee's Job Position</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="department" type="text" class="form-control validate" name="department" [(ngModel)]="department">
+          <!--<input id="department" type="text" class="form-control validate" name="department" [(ngModel)]="department">-->
+           <ng-select 
+                placeholder="Select one of the departments"
+                [ngStyle]="{padding:'4px'}"
+                (selected)="selectedDepartment($event)"
+                [options]="departments">
+            </ng-select>
           <label class="active" for="department">Employee's Department</label>
         </div>
       </div>
