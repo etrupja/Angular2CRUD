@@ -3,7 +3,7 @@
 <div class="row">
         <div class="col s12 m6" *ngFor="let department of departments">
                 <div class="card">
-                <div class="card-title">
+                <div class="card-title text-center">
                         {{department.name}}
                         <a (click)="removeDepartment(department.id)"><i class="small material-icons right">delete</i></a>
                 </div>

@@ -180,6 +180,7 @@ getContract(id: number): Observable<IContract> {
 
 
 
+
     private handleError(error: any) {
         var applicationError = error.headers.get('Application-Error');
         var serverError = error.json();

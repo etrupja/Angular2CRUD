@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../shared/data_services/data.service';
 import { IContract } from '../shared/interfaces';
 
-
 @Component({
     moduleId: module.id,
     selector: 'contracts',
