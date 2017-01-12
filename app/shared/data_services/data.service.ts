@@ -184,6 +184,24 @@ getContract(id: number): Observable<IContract> {
     }
 
 
+    //create a new Contract
+createContract(contract: IContract): Observable<IContract> {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(this._baseUrl + 'contract/', JSON.stringify(contract), {
+        headers: headers
+    })
+        .map((res: Response) => {
+                alert(res.json());
+            
+            return res.json();
+        })
+        .catch(this.handleError);
+}
+
+
+
 
 
 

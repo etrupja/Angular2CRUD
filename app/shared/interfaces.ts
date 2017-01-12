@@ -36,13 +36,13 @@ export class Employee {
 }
 
 export interface IContract{
-    id:number;
+    id?:number;
     name:string;
     startDate:Date;
     endDate:Date;
     amount:number;
     employeeId:number;
-    employee:string
+    employee?:string
 }
 
 

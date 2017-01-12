@@ -1,0 +1,48 @@
+<div class="container">
+    <h5>Create new contract</h5>
+    <form #form="ngForm" class="col s12" novalidate>
+      <div class="row">
+        <div class="input-field col s12 m12">
+          <input [disabled]="contractCreated" id="name" type="text" class="form-control validate" name="name" [(ngModel)]="name" required>
+          <label class="active" for="name">Contract title</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6 m6">
+            <input [disabled]="contractCreated" id="startDate" active type="date" class="form-control validate" name="startDate" [(ngModel)]="startDate" required>
+            <label  class="active" for="startDate">Start date</label>            
+        </div>
+        <div class="input-field col s6 m6">
+            <input [disabled]="contractCreated" id="endDate" active type="date" class="form-control validate" name="endDate" [(ngModel)]="endDate" required>
+            <label  class="active" for="endDate">End date</label>            
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="input-field col s6 m6">
+                        <ng-select 
+                            placeholder="Select one of the employees"
+                            [ngStyle]="{padding:'4px'}"
+                            (selected)="selectedEmployee($event)"
+                            [options]="employees">
+                        </ng-select>
+                    <label  class="active" for="jobPosition">Contract's employee</label>            
+        </div>
+        <div class="input-field col s6 m6">
+          <input [disabled]="contractCreated" id="amount" type="number" class="form-control validate" name="amount" [(ngModel)]="amount" required>
+          <label class="active" for="amount">Annual gross salary</label>
+        </div>
+        
+    </div>
+    
+        
+    <div class="row">
+            <div class="card-panel teal lighten-2 col s6 m6 l6" *ngIf="contractCreated" >{{info}}</div>
+            <button [disabled]="contractCreated" class="btn waves-effect waves-light right" type="submit" name="action" (click)="newContract()">Create Contract
+                <i class="material-icons right">send</i>
+            </button>
+            <a md-button class="btn right" [routerLink]="['/contracts']"><i class="material-icons left">keyboard_return</i>Back</a>
+        </div>
+    </form>
+</div>

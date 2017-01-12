@@ -15,6 +15,8 @@ import { EmployeeNewComponent } from './employees/employee-new.component';
 
 import {ContractsComponent} from './contracts/contracts.component';
 import {ContractEmployeeDetailsComponent} from './contracts/contract-employee-details.component';
+import {ContractNewComponent} from './contracts/contract-new.component';
+
  
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -27,6 +29,7 @@ const appRoutes: Routes = [
     { path: 'employee-new', component: EmployeeNewComponent },
     { path: 'contracts', component: ContractsComponent },
     { path: 'contract-employee-details/:id', component: ContractEmployeeDetailsComponent },
+    { path: 'contract-new', component: ContractNewComponent },
     { path: '', component: HomeComponent }
 ];
 
