@@ -2,18 +2,25 @@
 
 <div class="row">
         <div class="col s3 m3" *ngFor="let contract of contracts">
-        <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-                <span class="card-title"><b>{{contract.name}} </b> <a (click)="removeContract(id)"><i class="small material-icons right">delete</i></a></span>
+        <div class="card darken-1">
+            <div class="card-content black-text">
+                <span class="card-title"><b>{{contract.name}} </b> <a (click)="removeContract(contract.id)"><i class="small material-icons right red-text">delete</i></a></span>
                 <p>Contract start date: <b>{{contract.startDate | date }}</b> </p>
                 <p>Contract end date: <b>{{contract.endDate | date}}</b> </p>
                 <p>Annual gross salary: <b> {{contract.amount | currency:'EUR':true }} </b> </p>
                 <p>Employee: <b>{{contract.employee.firstName}}</b> </p>
             </div>
             <div class="card-action">
-                <a [routerLink]="['/contract-employee-details',contract.employee.id]" ><i class="material-icons left">recent_actors</i>Employees</a>
-                <a class="right" [routerLink]="['/contract-employee-details',contract.employee.id]" ><i class="material-icons right">mode_edit</i>Edit</a>
+                <a class="blue-text" [routerLink]="['/contract-employee-details',contract.employee.id]" ><i class="material-icons left">recent_actors</i>Employees</a>
+                <a class="right blue-text" [routerLink]="['/contract-employee-details',contract.employee.id]" ><i class="material-icons right">mode_edit</i>Edit</a>
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="fixed-action-btn">
+    <a [routerLink]="['/contract-new']"  class="btn-floating btn-large blue">
+      <i class="large material-icons">add</i>
+    </a>
 </div>

@@ -174,7 +174,14 @@ getContract(id: number): Observable<IContract> {
     }
 
 
-
+//delete contract
+    deleteContract(id: number): Observable<void> {
+        return this.http.delete(this._baseUrl + 'contract/' + id)
+            .map((res: Response) => {
+                return;
+            })
+            .catch(this.handleError);
+    }
 
 
 

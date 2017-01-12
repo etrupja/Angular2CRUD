@@ -23,7 +23,7 @@
       <td>{{employee.jobPosition}}</td>
       <td>{{employee.department.name}}</td>
       <td><a [routerLink]="['/employee-edit',employee.id]"><i class="material-icons center">mode_edit</i></a></td>
-      <td><a (click)="removeEmployee(employee.id)"><i class="small material-icons center">delete</i></a></td>
+      <td><a (click)="removeEmployee(employee.id)"><i class="small material-icons center red-text">delete</i></a></td>
     </tr>
   </tbody>
 </table>

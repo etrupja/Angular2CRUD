@@ -11,6 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ContractEmployeeDetailsComponent implements OnInit {
      id:number;
+
+     employeeId:number;
      lastName: string;
      firstName: string;
      age: number;
