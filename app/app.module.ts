@@ -22,6 +22,8 @@ import {DepartmentNewComponent} from './departments/department-new.component'
 import {ContractsComponent} from './contracts/contracts.component'
 import {ContractEmployeeDetailsComponent} from './contracts/contract-employee-details.component'
 import {ContractNewComponent} from './contracts/contract-new.component'
+import {ContractEditComponent} from './contracts/contract-edit.component'
+
 
 import {MdCardModule} from '@angular2-material/card'
 import {MdButtonModule} from '@angular2-material/button'
@@ -67,7 +69,7 @@ import {routing} from './app.routes';
     HomeComponent,
     EmployeesComponent,EmployeeEditComponent,EmployeeNewComponent,
     DepartmentsComponent,DepartmentEmployeesComponent,DepartmentEditComponent,DepartmentNewComponent,
-    ContractsComponent,ContractEmployeeDetailsComponent,ContractNewComponent,
+    ContractsComponent,ContractEmployeeDetailsComponent,ContractNewComponent,ContractEditComponent,
     ],
   bootstrap:    [ AppComponent ],
   providers:[MdIconRegistry, DataService,ConfigService]

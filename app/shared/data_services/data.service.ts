@@ -197,6 +197,22 @@ createContract(contract: IContract): Observable<IContract> {
         .catch(this.handleError);
 }
 
+//updates a contract
+    updateContract(contract: IContract): Observable<void> {
+        alert(JSON.stringify("Contract: "+contract));
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Origin', '*');
+
+        return this.http.put(this._baseUrl + 'contract/' + contract.id, JSON.stringify(contract), {
+            headers: headers
+        })
+            .map((res: Response) => {
+                return;
+            })
+            .catch(this.handleError);
+    }
+
 
 
 

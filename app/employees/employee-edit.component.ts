@@ -45,7 +45,9 @@ export class EmployeeEditComponent implements OnInit {
 
             //fill departments dropdown with data
              for(var dpt in departments)
+             {
                  this.departments[dpt] ={value:departments[dpt].id,label:departments[dpt].name} 
+             }
          },
          error=>{
             console.log('Failed to load departments '+error);
@@ -66,13 +68,13 @@ export class EmployeeEditComponent implements OnInit {
         });
      }
 
-     parseDate(dateString: string): Date {
-            if (dateString) {
-                return new Date(dateString);
-            } else {
-                return null;
+    parseDate(dateString: string): Date {
+                if (dateString) {
+                    return new Date(dateString);
+                } else {
+                    return null;
+                }
             }
-        }
 
      updateEmployee(){
         this.employee = {

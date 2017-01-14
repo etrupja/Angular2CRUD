@@ -8,11 +8,11 @@
                 <p>Contract start date: <b>{{contract.startDate | date }}</b> </p>
                 <p>Contract end date: <b>{{contract.endDate | date}}</b> </p>
                 <p>Annual gross salary: <b> {{contract.amount | currency:'EUR':true }} </b> </p>
-                <p>Employee: <b>{{contract.employee.firstName}}</b> </p>
+                <p>Employee: <b>{{contract.employee.firstName}} {{contract.employee.lastName}}</b> </p>
             </div>
             <div class="card-action">
                 <a class="blue-text" [routerLink]="['/contract-employee-details',contract.employee.id]" ><i class="material-icons left">recent_actors</i>Employee</a>
-                <a class="right blue-text" [routerLink]="['/contract-employee-details',contract.employee.id]" ><i class="material-icons right">mode_edit</i>Edit</a>
+                <a class="right blue-text" [routerLink]="['/contract-edit',contract.id]" ><i class="material-icons right">mode_edit</i>Edit</a>
             </div>
         </div>
     </div>

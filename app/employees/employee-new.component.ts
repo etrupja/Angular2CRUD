@@ -50,7 +50,9 @@ export class EmployeeNewComponent implements OnInit {
 
             //fill departments dropdown with data
              for(var dpt in departments)
+             {
                  this.departments[dpt] ={value:departments[dpt].id,label:departments[dpt].name} 
+             }
          },
          error=>{
             console.log('Failed to load departments '+error);

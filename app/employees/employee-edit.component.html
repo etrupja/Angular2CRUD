@@ -22,7 +22,7 @@
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="birthDate" type="date" class="form-control validate" name="birthDate"  [value]="birthDate | date:'yyyy-MM-dd'" (input)="birthDate=parseDate($event.target.value)">
+          <input id="birthDate" type="date" class="form-control validate" name="birthDate"  [(ngModel)]="birthDate" (input)="parseDate($event.target.value)">
           <label class="active" for="birthDate">Employee's Birthdate</label>
         </div>
       </div>
