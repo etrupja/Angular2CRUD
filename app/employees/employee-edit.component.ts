@@ -60,9 +60,6 @@ export class EmployeeEditComponent implements OnInit {
             this.birthDate = employee.birthDate;
             this.jobPosition = employee.jobPosition;
             this.departmentId = employee.department.name;
-
-            alert(JSON.stringify(employee));
-
         },
         error => {
             console.log('Failed while trying to load the employee. '+error);
@@ -87,9 +84,6 @@ export class EmployeeEditComponent implements OnInit {
             "jobPosition": this.jobPosition,
             "departmentId": this.departmentId
         }
-
-        alert('Employee data: ' + JSON.stringify(this.employee));
-        
          this.dataService.updateEmployee(this.employee)
          .subscribe(() => {
                 console.log('Employee was updated successfully. ');

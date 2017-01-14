@@ -123,8 +123,6 @@ createEmployee(employee: IEmployee): Observable<IEmployee> {
         headers: headers
     })
         .map((res: Response) => {
-                alert(res.json());
-            
             return res.json();
         })
         .catch(this.handleError);
@@ -193,7 +191,6 @@ createContract(contract: IContract): Observable<IContract> {
         headers: headers
     })
         .map((res: Response) => {
-                alert(res.json());
             
             return res.json();
         })
