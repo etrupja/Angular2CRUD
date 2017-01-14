@@ -25,6 +25,9 @@ export class EmployeeEditComponent implements OnInit {
      jobPositions: Array<any>;
      departments:Array<any>;
 
+     info:string = '';
+     employeeEdited:boolean =false;
+
     constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
     selectedJob(item:any) { this.jobPosition = item.value; } //a job position is selected
@@ -88,7 +91,9 @@ export class EmployeeEditComponent implements OnInit {
         }
          this.dataService.updateEmployee(this.employee)
          .subscribe(() => {
+                this.employeeEdited = true;
                 console.log('Employee was updated successfully. ');
+                this.info = 'Employee '+this.employee.firstName+' '+this.employee.lastName+' was updated successfully!';
             },
             error => {
                 console.log('Failed while trying to update the employee. '+error);

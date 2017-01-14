@@ -14,7 +14,10 @@ export class DepartmentEditComponent implements OnInit {
      name:string;
      description: string;
 
-    department:Department;
+     department:Department;
+
+     info:string = '';
+     departmentEdited:boolean = false;
 
      
     
@@ -38,7 +41,9 @@ export class DepartmentEditComponent implements OnInit {
 
          this.dataService.updateDepartment(this.department)
          .subscribe(() => {
+                this.departmentEdited = true;
                 console.log('Department was updated successfully. ');
+                this.info = 'Department '+this.department.name+ ' was edited successfully!';
             },
             error => {
                 console.log('Failed while trying to update the department. '+error);

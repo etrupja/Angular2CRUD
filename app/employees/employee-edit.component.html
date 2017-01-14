@@ -4,33 +4,33 @@
     <form #form="ngForm" class="col s12" novalidate>
       <div class="row">
         <div class="input-field col s6 m6">
-          <input id="firstName" type="text" class="form-control validate" name="firstName" [(ngModel)]="firstName">
+          <input [disabled]="employeeEdited" id="firstName" type="text" class="form-control validate" name="firstName" [(ngModel)]="firstName">
           <label class="active" for="firstName">Employee's First Name</label>
         </div>
 
         <div class="input-field col s6 m6">
-          <input id="lastName" type="text" class="form-control validate" name="lastName" [(ngModel)]="lastName">
+          <input [disabled]="employeeEdited" id="lastName" type="text" class="form-control validate" name="lastName" [(ngModel)]="lastName">
           <label class="active" for="lastName">Employee's Last Name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="age" type="number" class="form-control validate" name="age" [(ngModel)]="age"  >
+          <input [disabled]="employeeEdited" id="age" type="number" class="form-control validate" name="age" [(ngModel)]="age"  >
           <label class="active" for="age">Employee's Age</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="birthDate" type="date" class="form-control validate" name="birthDate"  [(ngModel)]="birthDate" (input)="parseDate($event.target.value)">
+          <input [disabled]="employeeEdited" id="birthDate" type="date" class="form-control validate" name="birthDate"  [(ngModel)]="birthDate" (input)="parseDate($event.target.value)">
           <label class="active" for="birthDate">Employee's Birthdate</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <!--<input id="jobPosition" type="text" class="form-control validate" name="jobPosition" [(ngModel)]="jobPosition">-->
           <ng-select 
+                [disabled]="employeeEdited"
                 placeholder="Select one of the positions"
                 [ngStyle]="{padding:'4px'}"
                 (selected)="selectedJob($event)"
@@ -42,8 +42,8 @@
 
       <div class="row">
         <div class="input-field col s12">
-          <!--<input id="department" type="text" class="form-control validate" name="department" [(ngModel)]="department">-->
            <ng-select 
+                [disabled]="employeeEdited"
                 placeholder="Select one of the departments"
                 [ngStyle]="{padding:'4px'}"
                 (selected)="selectedDepartment($event)"
@@ -54,7 +54,9 @@
       </div>
 
     <div class="row">
-            <button class="btn waves-effect waves-light right" type="submit" name="action" (click)="updateEmployee()">Save Changes
+            <div class="card-panel teal lighten-2 col s6 m6 l6" *ngIf="employeeEdited" >{{info}}</div>
+
+            <button disabled]="employeeEdited"  class="btn waves-effect waves-light right" type="submit" name="action" (click)="updateEmployee()">Save Changes
                 <i class="material-icons right">send</i>
             </button>
             <a md-button class="btn right" [routerLink]="['/employees']"><i class="material-icons left">keyboard_return</i>Back</a>

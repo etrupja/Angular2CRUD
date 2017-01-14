@@ -19,6 +19,8 @@ export class ContractEditComponent implements OnInit {
 
      employees:Array<any>;
 
+     info:string = '';
+     contractEdited:boolean =false;
 
     contract:IContract; //this will be sent to the API
     constructor(private dataService: DataService, private route: ActivatedRoute) { }
@@ -71,7 +73,9 @@ export class ContractEditComponent implements OnInit {
         }
          this.dataService.updateContract(this.contract)
          .subscribe(() => {
+                this.contractEdited = true;
                 console.log('Contract was updated successfully. ');
+                this.info = 'Contract '+this.contract.name+' was edited successfully';
             },
             error => {
                 console.log('Failed while trying to update the contract. '+error);

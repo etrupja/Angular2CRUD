@@ -4,20 +4,21 @@
     <form #form="ngForm" class="col s12" novalidate>
       <div class="row">
         <div class="input-field col s12">
-          <input id="name" type="text" class="form-control validate" name="name" [(ngModel)]="name">
+          <input [disabled]="departmentEdited" id="name" type="text" class="form-control validate" name="name" [(ngModel)]="name">
           <label class="active" for="name">Department name</label>
         </div>
       </div>
 
     <div class="row">
         <div class="input-field col s12">
-            <input id="description" type="text" class="form-control validate" name="description" [(ngModel)]="description">
+            <input [disabled]="departmentEdited"  id="description" type="text" class="form-control validate" name="description" [(ngModel)]="description">
             <label class="active" for="description">Department description</label>            
         </div>
     </div>
         
     <div class="row">
-            <button class="btn waves-effect waves-light right" type="submit" name="action" (click)="updateDepartment()">Save Changes
+            <div class="card-panel teal lighten-2 col s6 m6 l6" *ngIf="departmentEdited" >{{info}}</div>
+            <button [disabled]="departmentEdited" class="btn waves-effect waves-light right" type="submit" name="action" (click)="updateDepartment()">Save Changes
                 <i class="material-icons right">send</i>
             </button>
             <a md-button class="btn right" [routerLink]="['/departments']"><i class="material-icons left">keyboard_return</i>Back</a>
