@@ -48,6 +48,9 @@ import {MdIconRegistry} from '@angular2-material/icon';
 //Select module
 import {SelectModule} from 'angular2-select';
 
+//Dialog module
+import {MdDialogModule} from 'md-dialog/dialog';
+
 //Importing my services
 import { DataService } from './shared/data_services/data.service';
 import { ConfigService } from './shared/api_settings/config.service';
@@ -58,7 +61,7 @@ import {routing} from './app.routes';
 @NgModule({
   imports:      [ 
     BrowserModule, 
-    MdCardModule, MdButtonModule, MdIconModule,MdMenuModule,MdButtonToggleModule,MdCheckboxModule,MdGridListModule,MdInputModule,MdListModule,MdProgressBarModule,
+    MdCardModule, MdButtonModule, MdIconModule,MdMenuModule,MdButtonToggleModule,MdCheckboxModule,MdGridListModule,MdInputModule,MdListModule,MdProgressBarModule,MdDialogModule,
     MdProgressCircleModule,MdRadioModule,MdSidenavModule,MdSliderModule,MdSlideToggleModule,MdTabsModule,MdToolbarModule,MdTooltipModule,
     FormsModule,SelectModule,
     HttpModule,

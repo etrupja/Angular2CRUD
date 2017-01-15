@@ -1,5 +1,5 @@
 
-<div class="row">
+<div class="row container">
     <h5>Edit {{firstName}} {{lastName}} employee</h5>
     <form #form="ngForm" class="col s12" novalidate>
       <div class="row">
@@ -56,7 +56,7 @@
     <div class="row">
             <div class="card-panel teal lighten-2 col s6 m6 l6" *ngIf="employeeEdited" >{{info}}</div>
 
-            <button disabled]="employeeEdited"  class="btn waves-effect waves-light right" type="submit" name="action" (click)="updateEmployee()">Save Changes
+            <button [disabled]="employeeEdited"  class="btn waves-effect waves-light right" type="submit" name="action" (click)="updateEmployee()">Save Changes
                 <i class="material-icons right">send</i>
             </button>
             <a md-button class="btn right" [routerLink]="['/employees']"><i class="material-icons left">keyboard_return</i>Back</a>

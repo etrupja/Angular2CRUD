@@ -199,7 +199,6 @@ createContract(contract: IContract): Observable<IContract> {
 
 //updates a contract
     updateContract(contract: IContract): Observable<void> {
-        alert(JSON.stringify("Contract: "+contract));
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Access-Control-Allow-Origin', '*');

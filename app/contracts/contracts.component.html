@@ -2,7 +2,7 @@
 
 <div class="row">
         <div class="col s3 m3" *ngFor="let contract of contracts">
-        <div class="card darken-1">
+        <div class="card darken-1 z-depth-3">
             <div class="card-content black-text">
                 <span class="card-title"><b>{{contract.name}} </b> <a (click)="removeContract(contract.id)"><i class="small material-icons right red-text">delete</i></a></span>
                 <p>Contract start date: <b>{{contract.startDate | date }}</b> </p>
