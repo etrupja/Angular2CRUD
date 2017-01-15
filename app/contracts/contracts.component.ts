@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit } from '@angular/core';
 import { DataService } from '../shared/data_services/data.service';
 import { IContract } from '../shared/interfaces';
 
@@ -7,7 +7,7 @@ import { IContract } from '../shared/interfaces';
     selector: 'contracts',
     templateUrl: 'contracts.component.html'
 })
-export class ContractsComponent implements OnInit {
+export class ContractsComponent implements OnInit,AfterViewInit {
     contracts: IContract[];
     
     constructor(private dataService: DataService) { }
@@ -20,6 +20,14 @@ export class ContractsComponent implements OnInit {
             console.log('Failed to load contrats'+error);
         });
      }
+
+      ngAfterViewInit() {
+          $(document).ready(function() {
+            console.log("jQuery is ready");
+            $('.tooltipped').tooltip({delay: 50});
+        console.log(".tooltipped is ready");
+       });
+    } 
 
 
      removeContract(id:number){

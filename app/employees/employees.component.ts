@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit} from '@angular/core';
 import { DataService } from '../shared/data_services/data.service';
 import { IEmployee } from '../shared/interfaces';
 
@@ -7,7 +7,7 @@ import { IEmployee } from '../shared/interfaces';
     selector: 'employees',
     templateUrl: 'employees.component.html'
 })
-export class EmployeesComponent implements OnInit {
+export class EmployeesComponent implements OnInit,AfterViewInit {
     
     employees: IEmployee[];
 
@@ -22,6 +22,14 @@ export class EmployeesComponent implements OnInit {
             console.log('Failed to load employees.'+error);
         });
     }
+
+    ngAfterViewInit() {
+      $(document).ready(function() {
+        console.log("jQuery is ready");
+        $('.tooltipped').tooltip({delay: 50});
+        console.log(".tooltipped is ready");
+      });
+    } 
 
     removeEmployee(id:number){
         var deleteConfirmation = confirm("Do you want to delete the employee");

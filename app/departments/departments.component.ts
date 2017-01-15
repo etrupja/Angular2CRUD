@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {IDepartment} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
 import {DepartmentEmployeesComponent} from './department-employees.component';
@@ -9,7 +9,7 @@ import {DepartmentEmployeesComponent} from './department-employees.component';
     selector: 'departments',
     templateUrl: 'departments.component.html'
 })
-export class DepartmentsComponent implements OnInit {
+export class DepartmentsComponent implements OnInit,AfterViewInit {
      departments: IDepartment[];
     
     constructor(private dataService: DataService) { }
@@ -22,6 +22,14 @@ export class DepartmentsComponent implements OnInit {
             console.log('Failed to load departments '+error);
         });
      }
+
+     ngAfterViewInit() {
+          $(document).ready(function() {
+            console.log("jQuery is ready");
+            $('.tooltipped').tooltip({delay: 50});
+        console.log(".tooltipped is ready");
+       });
+    } 
 
      removeDepartment(id:number){
         var deleteConfirmation = confirm("Do you want to delete the department");
