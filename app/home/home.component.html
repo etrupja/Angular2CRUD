@@ -1,3 +1,21 @@
+
+<div class="row center">
+        <button data-target="modal1" class="btn modal-trigger">Modal</button>
+      </div>
+    
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div>
+      <br><br>
+
+
 <div class="section no-pad-bot" >
     <div class="container">
         <br>
@@ -45,3 +63,11 @@
     <div class="section">
     </div>
   </div>
+
+
+<script>
+      $(document).ready(function() {
+        alert('alert');
+        $('.modal').modal();
+      });
+    </script>

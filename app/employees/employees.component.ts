@@ -21,9 +21,6 @@ export class EmployeesComponent implements OnInit {
         error => {
             console.log('Failed to load employees.'+error);
         });
-
-        
-
     }
 
     removeEmployee(id:number){
