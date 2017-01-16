@@ -11,6 +11,10 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
     
     employees: IEmployee[];
 
+    employeeId:number;
+    firstName: string;
+    lastName:string;
+
     constructor(private dataService: DataService) { }
 
     ngOnInit() { 
@@ -25,24 +29,23 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
 
     ngAfterViewInit() {
       $(document).ready(function() {
-        console.log("jQuery is ready");
+        $('.modal').modal();
+        console.log(".modal is ready");
         $('.tooltipped').tooltip({delay: 50});
         console.log(".tooltipped is ready");
       });
     } 
 
-    removeEmployee(id:number){
-        var deleteConfirmation = confirm("Do you want to delete the employee");
-        //If he does not want to delete the employee
-        if(deleteConfirmation == false) { 
-            console.log('Employee is not deleted. ');
-            return;
+    setEmployeeData(id:number,fName:string,lName:string){
+            this.employeeId = id;
+            this.firstName = fName;
+            this.lastName = lName;
         }
 
-        this.dataService.deleteEmployee(id)
+    removeEmployee(){
+        this.dataService.deleteEmployee(this.employeeId)
             .subscribe(() => {
                 console.log('Employee was deleted successfully. ');
-
                 //Reload Employees after one is deleted
                 this.dataService.getEmployees().subscribe((employees:IEmployee[]) => {
                         this.employees = employees;

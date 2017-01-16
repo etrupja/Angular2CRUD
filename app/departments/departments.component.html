@@ -5,7 +5,7 @@
                 <div class="card z-depth-3">
                 <div class="card-title text-center">
                         {{department.name}}
-                        <a (click)="removeDepartment(department.id)"><i class="small material-icons right red-text">delete</i></a>
+                        <a href="#deleteDepartment" (click)="setDepartmentData(department.id,department.name)"><i class="small material-icons right red-text">delete</i></a>
                 </div>
                 <div class="card-content">
                         <p>
@@ -27,6 +27,18 @@
     </a>
 </div>
 
+
+<!-- Delete Department Modal -->
+  <div id="deleteDepartment" class="modal">
+    <div class="modal-content">
+      <h4>Delete {{departmentName}} department?</h4>
+      <p>Are you sure that you want to delete this department? </p>
+    </div>
+    <div class="modal-footer">
+      <a (click)="removeDepartment()" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a [routerLink]="['/departments']" class=" modal-action modal-close waves-effect waves-red btn-flat">Decline</a>
+    </div>
+  </div>
    
 
 

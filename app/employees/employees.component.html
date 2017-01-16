@@ -1,4 +1,6 @@
 <h4>Employees <h4>
+  
+
 
 <table class="striped highlight centered responsive-table z-depth-3">
   <thead>
@@ -23,7 +25,7 @@
       <td>{{employee.jobPosition}}</td>
       <td>{{employee.department.name}}</td>
       <td><a [routerLink]="['/employee-edit',employee.id]"><i class="material-icons center">mode_edit</i></a></td>
-      <td><a (click)="removeEmployee(employee.id)"><i class="small material-icons center red-text">delete</i></a></td>
+      <td><a href="#deleteEmployee" (click)="setEmployeeData(employee.id,employee.firstName,employee.lastName)"><i class="small material-icons center red-text">delete</i></a></td>
     </tr>
   </tbody>
 </table>
@@ -33,3 +35,15 @@
       <i class="large material-icons">add</i>
     </a>
 </div>
+
+  <!-- Delete Employee Modal -->
+  <div id="deleteEmployee" class="modal">
+    <div class="modal-content">
+      <h4>Delete {{firstName}} {{lastName}} employee?</h4>
+      <p>Are you sure that you want to delete this employee? </p>
+    </div>
+    <div class="modal-footer">
+      <a (click)="removeEmployee()" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a [routerLink]="['/employees']" class=" modal-action modal-close waves-effect waves-red btn-flat">Decline</a>
+    </div>
+  </div>

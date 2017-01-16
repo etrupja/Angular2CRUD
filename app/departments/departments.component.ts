@@ -11,6 +11,8 @@ import {DepartmentEmployeesComponent} from './department-employees.component';
 })
 export class DepartmentsComponent implements OnInit,AfterViewInit {
      departments: IDepartment[];
+     departmentId:number;
+     departmentName:string;
     
     constructor(private dataService: DataService) { }
 
@@ -25,24 +27,22 @@ export class DepartmentsComponent implements OnInit,AfterViewInit {
 
      ngAfterViewInit() {
           $(document).ready(function() {
-            console.log("jQuery is ready");
+            $('.modal').modal();
+            console.log(".modal is ready");
             $('.tooltipped').tooltip({delay: 50});
-        console.log(".tooltipped is ready");
+            console.log(".tooltipped is ready");
        });
     } 
 
-     removeDepartment(id:number){
-        var deleteConfirmation = confirm("Do you want to delete the department");
-        //If he does not want to delete the department
-        if(deleteConfirmation == false) { 
-            console.log('Department is not deleted. ');
-            return;
-        }
+    setDepartmentData(id:number,name:string){
+        this.departmentId = id;
+        this.departmentName = name;
+    }
 
-        this.dataService.deleteDepartment(id)
+     removeDepartment(){
+        this.dataService.deleteDepartment(this.departmentId)
             .subscribe(() => {
                 console.log('Department was deleted successfully. ');
-
                 //Reload Department after one is deleted
                 this.dataService.getDepartments().subscribe((departments:IDepartment[]) => {
                         this.departments = departments;

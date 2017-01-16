@@ -13,7 +13,7 @@ export class HomeComponent implements AfterViewInit,OnInit   {
     ngAfterViewInit() {
       $(document).ready(function() {
         $('.modal').modal();
-        console.log("jQuery is ready");
+        console.log(".modal is ready");
         $('.tooltipped').tooltip({delay: 50});
         console.log(".tooltipped is ready");
 

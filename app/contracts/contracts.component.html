@@ -4,7 +4,7 @@
         <div class="col s3 m3" *ngFor="let contract of contracts">
         <div class="card darken-1 z-depth-3">
             <div class="card-content black-text">
-                <span class="card-title"><b>{{contract.name}} </b> <a (click)="removeContract(contract.id)"><i class="small material-icons right red-text">delete</i></a></span>
+                <span class="card-title"><b>{{contract.name}} </b> <a href="#deleteContract" (click)="setContractData(contract.id,contract.name)"><i class="small material-icons right red-text">delete</i></a></span>
                 <p>Contract start date: <b>{{contract.startDate | date }}</b> </p>
                 <p>Contract end date: <b>{{contract.endDate | date}}</b> </p>
                 <p>Annual gross salary: <b> {{contract.amount | currency:'EUR':true }} </b> </p>
@@ -24,3 +24,17 @@
       <i class="large material-icons">add</i>
     </a>
 </div>
+
+
+
+ <!-- Delete Contract Modal -->
+  <div id="deleteContract" class="modal">
+    <div class="modal-content">
+      <h4>Delete {{contractName}} contract?</h4>
+      <p>Are you sure that you want to delete this contract? </p>
+    </div>
+    <div class="modal-footer">
+      <a (click)="removeContract()" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a [routerLink]="['/contracts']" class=" modal-action modal-close waves-effect waves-red btn-flat">Decline</a>
+    </div>
+  </div>

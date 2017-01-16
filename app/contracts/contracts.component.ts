@@ -9,7 +9,9 @@ import { IContract } from '../shared/interfaces';
 })
 export class ContractsComponent implements OnInit,AfterViewInit {
     contracts: IContract[];
-    
+    contractId:number;
+    contractName:string;
+
     constructor(private dataService: DataService) { }
 
     ngOnInit() {
@@ -23,25 +25,23 @@ export class ContractsComponent implements OnInit,AfterViewInit {
 
       ngAfterViewInit() {
           $(document).ready(function() {
-            console.log("jQuery is ready");
+            $('.modal').modal();
+            console.log(".modal is ready");
             $('.tooltipped').tooltip({delay: 50});
         console.log(".tooltipped is ready");
        });
     } 
 
+    setContractData(id:number,name:string){
+        this.contractId = id;
+        this.contractName = name;
+    }
 
-     removeContract(id:number){
-        var deleteConfirmation = confirm("Do you want to delete the contract");
-        //If he does not want to delete the contract
-        if(deleteConfirmation == false) { 
-            console.log('Contract is not deleted. ');
-            return;
-        }
 
-        this.dataService.deleteContract(id)
+     removeContract(){
+        this.dataService.deleteContract(this.contractId)
             .subscribe(() => {
                 console.log('Contract was deleted successfully. ');
-
                 //Reload Contracts after one is deleted
                 this.dataService.getContracts().subscribe((contracts:IContract[]) => {
                         this.contracts = contracts;
