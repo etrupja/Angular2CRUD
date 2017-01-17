@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Employee, IEmployee,IDepartment} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
@@ -9,7 +9,7 @@ import { DataService } from '../shared/data_services/data.service';
     selector: 'employee-edit',
     templateUrl: 'employee-edit.component.html'
 })
-export class EmployeeEditComponent implements OnInit {
+export class EmployeeEditComponent implements OnInit, AfterViewInit {
      id: number;              //Identifies which department was selected
      lastName:string;
      firstName:string;
@@ -22,62 +22,65 @@ export class EmployeeEditComponent implements OnInit {
      employee:IEmployee; 
 
      //Drop downs
-     jobPositions: Array<any>;
-     departments:Array<any>;
+     departments:IDepartment[];
 
      info:string = '';
      employeeEdited:boolean =false;
 
     constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
-    selectedJob(item:any) { this.jobPosition = item.value; } //a job position is selected
-    selectedDepartment(item:any) { this.departmentId = item.value; } //A department is selected
-
     ngOnInit() {
-
-        this.jobPositions = [
-                {value: 'Trainee', label: 'Trainee'},
-                {value: 'Junior', label: 'Junior'},
-                {value: 'Senior', label: 'Senior'},
-                {value: 'Expert', label: 'Expert'},
-                {value: 'Manager', label: 'Manager'}
-            ];
-
-        this.dataService.getDepartments().subscribe((departments:IDepartment[])=>{
-             this.departments= []; 
-
-            //fill departments dropdown with data
-             for(var dpt in departments)
-             {
-                 this.departments[dpt] ={value:departments[dpt].id,label:departments[dpt].name} 
-             }
-         },
-         error=>{
-            console.log('Failed to load departments '+error);
-         })
-
         this.id = +this.route.snapshot.params['id'];
-        this.dataService.getEmployee(this.id).subscribe((employee:IEmployee) => {
 
+        this.dataService.getEmployee(this.id).subscribe((employee:IEmployee) => {
+            console.log('Employee loaded with success. ');
             this.firstName = employee.firstName;
             this.lastName = employee.lastName;
             this.age = employee.age;
             this.birthDate = employee.birthDate;
             this.jobPosition = employee.jobPosition;
-            this.departmentId = employee.department.name;
+            this.departmentId = employee.department.id;
+            this.department = employee.department.name;
         },
         error => {
             console.log('Failed while trying to load the employee. '+error);
         });
+
+        this.dataService.getDepartments().subscribe((departments:IDepartment[])=>{
+             this.departments= departments; 
+         },
+         error=>{
+            console.log('Failed to load departments '+error);
+         })
      }
 
-    parseDate(dateString: string): Date {
-                if (dateString) {
-                    return new Date(dateString);
-                } else {
-                    return null;
-                }
-            }
+     ngAfterViewInit() {
+      $(document).ready(function() {
+        window.setTimeout(() => {
+            $('#department').material_select();
+            $('#department').change((e:any) => {
+                console.log("department selected: "+ e.currentTarget.value);
+                this.departmentId = e.currentTarget.value
+            });
+
+            $('#jobPosition').material_select();
+            $('#jobPosition').change((e:any) => {
+                console.log("job position selected: "+ e.currentTarget.value);
+                this.jobPosition = e.currentTarget.value
+            });
+            console.log("select is ready");
+            
+        },500);
+
+        $('.datepicker').pickadate({
+            selectYears: 15, // Creates a dropdown of 15 years to control year
+        });
+    
+        $('.datepicker').change((e:any) => {
+                this.birthdate = e.currentTarget.value;
+        });
+      });
+    } 
 
      updateEmployee(){
         this.employee = {

@@ -22,34 +22,32 @@
 
       <div class="row">
         <div class="input-field col s12">
-          <input [disabled]="employeeEdited" id="birthDate" type="date" class="form-control validate" name="birthDate"  [(ngModel)]="birthDate" (input)="parseDate($event.target.value)">
+          <input [disabled]="employeeCreated" id="birthdate" active type="date" [ngModel]="birthDate" class="datepicker" name="datepicker" >
           <label class="active" for="birthDate">Employee's Birthdate</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <ng-select 
-                [disabled]="employeeEdited"
-                placeholder="Select one of the positions"
-                [ngStyle]="{padding:'4px'}"
-                (selected)="selectedJob($event)"
-                [options]="jobPositions">
-            </ng-select>
-          <label class="active" for="jobPosition">Employee's Job Position</label>
+          <select id="jobPosition" >
+              <option value="" disabled selected>{{jobPosition}}</option>
+              <option value="Trainee">Trainee</option>
+              <option value="Junior">Junior</option>
+              <option value="Senior">Senior</option>
+              <option value="Expert">Expert</option>
+              <option value="Manager">Manager</option>
+          </select>
+          <label class="active" for="department">Job position</label>    
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-           <ng-select 
-                [disabled]="employeeEdited"
-                placeholder="Select one of the departments"
-                [ngStyle]="{padding:'4px'}"
-                (selected)="selectedDepartment($event)"
-                [options]="departments">
-            </ng-select>
-          <label class="active" for="department">Employee's Department</label>
+           <select id="department">
+                <option value="" disabled selected>{{department}}</option>
+                <option *ngFor="let dpt of departments" [value]="dpt.id">{{dpt.name}}</option>
+            </select>
+            <label  class="active" for="department">Department</label>    
         </div>
       </div>
 

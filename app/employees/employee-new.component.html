@@ -14,21 +14,22 @@
 
       <div class="row">
         <div class="input-field col s6 m6">
-                        <ng-select 
-                            placeholder="Select one of the positions"
-                            [ngStyle]="{padding:'4px'}"
-                            (selected)="selectedJob($event)"
-                            [options]="jobPositions">
-                        </ng-select>
-                    <label  class="active" for="jobPosition">Job Position</label>            
+            <select id="jobPosition">
+                <option value="" disabled selected>Choose a job position</option>
+                <option value="Trainee">Trainee</option>
+                <option value="Junior">Junior</option>
+                <option value="Senior">Senior</option>
+                <option value="Expert">Expert</option>
+                <option value="Manager">Manager</option>
+            </select>
+            <label class="active" for="department">Job position</label>           
         </div>
+
         <div class="input-field col s6 m6">
-            <ng-select 
-                            placeholder="Select one of the departments"
-                            [ngStyle]="{padding:'4px'}"
-                            (selected)="selectedDepartment($event)"
-                            [options]="departments">
-                        </ng-select>
+            <select id="department">
+                <option value="" disabled selected>Choose a department</option>
+                <option *ngFor="let dpt of departments" [value]="dpt.id">{{dpt.name}}</option>
+            </select>
             <label  class="active" for="department">Department</label>            
         </div>
         
@@ -37,7 +38,7 @@
     </div>
     <div class="row">
         <div class="input-field col s6 m6">
-            <input [disabled]="employeeCreated" id="birthdate" active type="date" class="form-control validate" name="birthdate" [(ngModel)]="birthdate" required>
+            <input [disabled]="employeeCreated" id="birthdate" active type="date" class="datepicker" >
             <label  class="active" for="birthdate">Birth date</label>            
         </div>
         <div class="input-field col s6 m6">
