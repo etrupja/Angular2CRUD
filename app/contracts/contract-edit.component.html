@@ -12,7 +12,7 @@
 
         <div class="input-field col s6 m6">
            <select id="employee">
-                <option value="" disabled selected>Select employee</option>
+                <option value="" disabled selected>{{emp.firstName}} {{emp.lastName}}</option>
                 <option *ngFor="let emp of employees" [value]="emp.id">{{emp.firstName}} {{emp.lastName}}</option>
             </select>
             <label  class="active" for="department">Employee</label>    
