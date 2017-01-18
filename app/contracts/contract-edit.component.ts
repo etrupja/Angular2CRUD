@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IEmployee,IContract} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
@@ -9,15 +9,14 @@ import { DataService } from '../shared/data_services/data.service';
     selector: 'contract-edit',
     templateUrl: 'contract-edit.component.html'
 })
-export class ContractEditComponent implements OnInit {
+export class ContractEditComponent implements OnInit,AfterViewInit {
      id: number;              //Identifies which contract was selected
      name:string;
      amount: number;
      startDate: Date;
      endDate: Date;
      employeeId:number;
-
-     employees:Array<any>;
+     employees:IEmployee[];
 
      info:string = '';
      contractEdited:boolean =false;
@@ -30,11 +29,7 @@ export class ContractEditComponent implements OnInit {
     ngOnInit() {
 
         this.dataService.getEmployees().subscribe((employees:IEmployee[])=>{
-             this.employees= []; 
-
-            //fill employees dropdown with data
-             for(var emp in employees)
-                 this.employees[emp] ={value:employees[emp].id,label:employees[emp].firstName +' '+employees[emp].lastName } 
+             this.employees= employees; 
          },
          error=>{
             console.log('Failed to load employees '+error);
@@ -54,15 +49,41 @@ export class ContractEditComponent implements OnInit {
         });
      }
 
-     parseDate(dateString: string): Date {
-            if (dateString) {
-                return new Date(dateString);
-            } else {
-                return null;
-            }
-        }
+     ngAfterViewInit() {
+      $(document).ready(function() {
+        window.setTimeout(() => {
+            $('#employee').material_select();
+            $('#employee').change((e:any) => {
+                console.log("employee selected: "+ e.currentTarget.value);
+                this.employeeId = e.currentTarget.value
+            });
+            console.log("select is ready");
+            
+        },500);
+
+        $('#startDate').pickadate({
+            selectYears: 15
+        });
+        
+         $('#endDate').pickadate({
+            selectYears: 15
+        });
+        
+      });
+      $('#startDate').change((e:any) => {
+                this.startDate = e.currentTarget.value;
+                console.log(this.startDate);
+        });
+       $('#endDate').change((e:any) => {
+               this.endDate = e.currentTarget.value;
+               console.log(this.endDate);
+       });
+    } 
 
      updateContract(){
+          console.log('this.startDate '+this.startDate);
+          console.log('this.endDate '+this.endDate);
+        
         this.contract = {
             "id":this.id,
             "name": this.name,

@@ -11,13 +11,11 @@
       <div class="row">
 
         <div class="input-field col s6 m6">
-           <ng-select 
-                placeholder="Select one of the employees"
-                [ngStyle]="{padding:'4px'}"
-                (selected)="selectedEmployee($event)"
-                [options]="employees">
-            </ng-select>
-          <label class="active" for="department">Employee's full name</label>
+           <select id="employee">
+                <option value="" disabled selected>Select employee</option>
+                <option *ngFor="let emp of employees" [value]="emp.id">{{emp.firstName}} {{emp.lastName}}</option>
+            </select>
+            <label  class="active" for="department">Employee</label>    
         </div>
         <div  class="input-field col s6 m6">
           <input [disabled]="contractEdited" id="amount" type="number" class="form-control validate" name="amount" [(ngModel)]="amount"  >
@@ -27,11 +25,11 @@
 
       <div class="row">
         <div class="input-field col s6 m6">
-          <input [disabled]="contractEdited" id="startDate" type="date" class="form-control validate" name="startDate"  [(ngModel)]="startDate" (input)="parseDate($event.target.value)">
-          <label class="active" for="startDate">Contract's Start Date</label>
+          <input [disabled]="contractEdited" id="startDate" active type="date" [ngModel]="startDate" class="datepicker" name="st" >
+          <label class="active"  for="startDate">Contract's Start Date</label>
         </div>
         <div class="input-field col s6 m6">
-          <input [disabled]="contractEdited" id="endDate" type="date" class="form-control validate" name="endDate"  [(ngModel)]="endDate" (input)="parseDate($event.target.value)">
+          <input [disabled]="contractEdited" id="endDate" active type="date" [ngModel]="endDate" class="datepicker" name="ed" >
           <label class="active" for="endDate">Contract's End Date</label>
         </div>
       </div>
