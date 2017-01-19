@@ -17,14 +17,13 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
      endDate: Date;
      employeeId:number;
      employees:IEmployee[];
+     employee:IEmployee; //This is used for the seleced employee
 
      info:string = '';
      contractEdited:boolean =false;
 
     contract:IContract; //this will be sent to the API
     constructor(private dataService: DataService, private route: ActivatedRoute) { }
-
-    selectedEmployee(item:any) { this.employeeId = item.value; } //An employee is selected
 
     ngOnInit() {
 
@@ -37,16 +36,25 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
 
         this.id = +this.route.snapshot.params['id'];
         this.dataService.getContract(this.id).subscribe((contract:IContract) => {
-
+            console.log('contract loaded. ');
             this.name = contract.name;
             this.amount = contract.amount;
             this.startDate= contract.startDate;
             this.endDate= contract.endDate;
             this.employeeId = contract.employeeId;
+            console.log('selected employee id: '+this.employeeId);
         },
         error => {
             console.log('Failed while trying to load the contract. '+error);
         });
+
+        
+        // this.dataService.getEmployee(this.employeeId).subscribe((employee:IEmployee) => {
+        //     this.employee = employee;
+        //     console.log('employee loaded: '+this.employee);
+        // })
+
+
      }
 
      ngAfterViewInit() {

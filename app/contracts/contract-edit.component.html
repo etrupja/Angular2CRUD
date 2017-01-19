@@ -12,7 +12,7 @@
 
         <div class="input-field col s6 m6">
            <select id="employee">
-                <option value="" disabled selected>{{emp.firstName}} {{emp.lastName}}</option>
+                <option value="" disabled selected>Select an employee </option>
                 <option *ngFor="let emp of employees" [value]="emp.id">{{emp.firstName}} {{emp.lastName}}</option>
             </select>
             <label  class="active" for="department">Employee</label>    
@@ -25,11 +25,11 @@
 
       <div class="row">
         <div class="input-field col s6 m6">
-          <input [disabled]="contractEdited" id="startDate" active type="date" [ngModel]="startDate" class="datepicker" name="st" >
+          <input [disabled]="contractEdited" id="startDate" active type="date" [ngModel]="startDate | date" class="datepicker" name="st" >
           <label class="active"  for="startDate">Contract's Start Date</label>
         </div>
         <div class="input-field col s6 m6">
-          <input [disabled]="contractEdited" id="endDate" active type="date" [ngModel]="endDate" class="datepicker" name="ed" >
+          <input [disabled]="contractEdited" id="endDate" active type="date" [ngModel]="endDate | date" class="datepicker" name="ed" >
           <label class="active" for="endDate">Contract's End Date</label>
         </div>
       </div>

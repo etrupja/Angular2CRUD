@@ -22,7 +22,7 @@
 
       <div class="row">
         <div class="input-field col s12">
-          <input [disabled]="employeeCreated" id="birthdate" active type="date" [ngModel]="birthDate" class="datepicker" name="datepicker" >
+          <input [disabled]="employeeCreated" id="birthdate" active type="date" [ngModel]="birthDate | date" class="datepicker" name="datepicker" >
           <label class="active" for="birthDate">Employee's Birthdate</label>
         </div>
       </div>
