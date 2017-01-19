@@ -22,12 +22,13 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
      info:string = '';
      contractEdited:boolean =false;
 
-    contract:IContract; //this will be sent to the API
-    constructor(private dataService: DataService, private route: ActivatedRoute) { }
+     contract:IContract; //this will be sent to the API
+     constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
     ngOnInit() {
 
         this.dataService.getEmployees().subscribe((employees:IEmployee[])=>{
+             console.log('employees loaded.');
              this.employees= employees; 
          },
          error=>{
@@ -36,25 +37,22 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
 
         this.id = +this.route.snapshot.params['id'];
         this.dataService.getContract(this.id).subscribe((contract:IContract) => {
-            console.log('contract loaded. ');
             this.name = contract.name;
             this.amount = contract.amount;
             this.startDate= contract.startDate;
             this.endDate= contract.endDate;
             this.employeeId = contract.employeeId;
-            console.log('selected employee id: '+this.employeeId);
+            console.log('contract loaded. ');
+            console.log('selected employee id: '+ this.employeeId);
         },
         error => {
             console.log('Failed while trying to load the contract. '+error);
         });
-
         
         // this.dataService.getEmployee(this.employeeId).subscribe((employee:IEmployee) => {
         //     this.employee = employee;
         //     console.log('employee loaded: '+this.employee);
         // })
-
-
      }
 
      ngAfterViewInit() {
@@ -66,8 +64,7 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
                 this.employeeId = e.currentTarget.value
             });
             console.log("select is ready");
-            
-        },500);
+        },600);
 
         $('#startDate').pickadate({
             selectYears: 15
@@ -89,9 +86,6 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
     } 
 
      updateContract(){
-          console.log('this.startDate '+this.startDate);
-          console.log('this.endDate '+this.endDate);
-        
         this.contract = {
             "id":this.id,
             "name": this.name,

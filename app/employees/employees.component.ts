@@ -15,12 +15,16 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
     firstName: string;
     lastName:string;
 
+    dataLoaded:boolean = false;
+
     constructor(private dataService: DataService) { }
 
     ngOnInit() { 
         this.dataService.getEmployees().subscribe(
           (employees:IEmployee[]) => {
             this.employees = employees;
+
+            this.dataLoaded = true;
         },
         error => {
             console.log('Failed to load employees.'+error);

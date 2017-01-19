@@ -13,13 +13,9 @@ export class DepartmentEditComponent implements OnInit {
      id: number;              //Identifies which department was selected
      name:string;
      description: string;
-
      department:Department;
-
      info:string = '';
      departmentEdited:boolean = false;
-
-     
     
     constructor(private dataService: DataService,
                 private route: ActivatedRoute) { }

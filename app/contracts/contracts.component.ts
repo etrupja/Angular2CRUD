@@ -12,11 +12,15 @@ export class ContractsComponent implements OnInit,AfterViewInit {
     contractId:number;
     contractName:string;
 
+    dataLoaded:boolean=false; //this is used for te spiner
+
     constructor(private dataService: DataService) { }
 
     ngOnInit() {
         this.dataService.getContracts().subscribe((contracts:IContract[]) => {
             this.contracts = contracts;
+            console.log('contracts loaded')
+            this.dataLoaded = true;
         },
         error => {
             console.log('Failed to load contrats'+error);
@@ -28,7 +32,7 @@ export class ContractsComponent implements OnInit,AfterViewInit {
             $('.modal').modal();
             console.log(".modal is ready");
             $('.tooltipped').tooltip({delay: 50});
-        console.log(".tooltipped is ready");
+            console.log(".tooltipped is ready");
        });
     } 
 

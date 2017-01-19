@@ -1,7 +1,18 @@
-<h4>Employees <h4>
+<div *ngIf="!dataLoaded" class="preloader-wrapper big active" style="position: fixed; z-index:999; overflow:show; margin:auto; top:0; left:0; bottom:0; right:0;"> 
+    <div class="spinner-layer spinner-blue-only centered">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
 
+<h4 *ngIf="dataLoaded">Employees <h4>
 
-<table class="striped highlight centered responsive-table z-depth-2" style="font-size: 15px;">
+<table *ngIf="dataLoaded" class="striped highlight centered responsive-table z-depth-2" style="font-size: 20px;">
   <thead>
     <tr>
         <th data-field="firstName">First Name</th>
