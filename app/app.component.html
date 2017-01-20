@@ -1,4 +1,4 @@
-<body>
+<body style="display: flex; min-height: 100vh; flex-direction: column;">
     <header>
       <nav>
         <div class="nav-wrapper blue lighten-2">
@@ -11,12 +11,12 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main style="flex: 1 0 auto;">
         <div>
             <router-outlet></router-outlet>
         </div>
     </main>
-    <footer class="page-footer blue lighten-2" style="position:absolute; bottom:0; width:100%;">
+    <footer class="page-footer blue lighten-2">
       <div class="footer-copyright">
         <div class="container"> 
           <a href="https://linkedin.com/in/ervistrupja" class="grey-text text-lighten-4" target="_blank" >© 2017 Ervis Trupja</a>  
