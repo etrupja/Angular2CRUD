@@ -28,8 +28,6 @@ export class DepartmentsComponent implements OnInit,AfterViewInit {
           $(document).ready(function() {
             $('.modal').modal();
             console.log(".modal is ready");
-            $('.tooltipped').tooltip({delay: 50});
-            console.log(".tooltipped is ready");
        });
     } 
 

@@ -31,8 +31,6 @@ export class ContractsComponent implements OnInit,AfterViewInit {
           $(document).ready(function() {
             $('.modal').modal();
             console.log(".modal is ready");
-            $('.tooltipped').tooltip();
-            console.log(".tooltipped is ready");
        });
     } 
 
