@@ -43,28 +43,19 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
             this.endDate= contract.endDate;
             this.employeeId = contract.employeeId;
             console.log('contract loaded. ');
-            console.log('selected employee id: '+ this.employeeId);
+            console.log('contract name: '+this.name);
         },
         error => {
             console.log('Failed while trying to load the contract. '+error);
         });
-        
-        // this.dataService.getEmployee(this.employeeId).subscribe((employee:IEmployee) => {
-        //     this.employee = employee;
-        //     console.log('employee loaded: '+this.employee);
-        // })
      }
 
      ngAfterViewInit() {
       $(document).ready(function() {
         window.setTimeout(() => {
             $('#employee').material_select();
-            $('#employee').change((e:any) => {
-                console.log("employee selected: "+ e.currentTarget.value);
-                this.employeeId = e.currentTarget.value
-            });
             console.log("select is ready");
-        },600);
+        },500);
 
         $('#startDate').pickadate({
             selectYears: 15
@@ -83,9 +74,14 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
                this.endDate = e.currentTarget.value;
                console.log(this.endDate);
        });
+       $('#employee').change((e:any) => {
+                console.log("employee selected: "+ e.currentTarget.value);
+                this.employeeId = e.currentTarget.value
+            });
     } 
 
      updateContract(){
+        console.log('contract name: '+this.name);
         this.contract = {
             "id":this.id,
             "name": this.name,

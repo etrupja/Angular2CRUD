@@ -13,15 +13,11 @@ export class DepartmentsComponent implements OnInit,AfterViewInit {
      departments: IDepartment[];
      departmentId:number;
      departmentName:string;
-
-     dataLoaded:boolean = false;
     
     constructor(private dataService: DataService) { }
-
     ngOnInit() {
         this.dataService.getDepartments().subscribe((departments:IDepartment[]) => {
             this.departments = departments;
-            this.dataLoaded = true;
         },
         error => {
             console.log('Failed to load departments '+error);

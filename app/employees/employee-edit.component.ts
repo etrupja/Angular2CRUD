@@ -58,31 +58,38 @@ export class EmployeeEditComponent implements OnInit, AfterViewInit {
       $(document).ready(function() {
         window.setTimeout(() => {
             $('#department').material_select();
-            $('#department').change((e:any) => {
+            $('#jobPosition').material_select();
+            console.log("select is ready");
+        },500);
+      });
+      
+      $('.datepicker').pickadate({
+          selectYears: 15, // Creates a dropdown of 15 years to control year
+      });
+
+      $('.datepicker').change((e:any) => {
+              this.birthDate = e.currentTarget.value;
+              console.log(this.birthDate);
+      });
+
+      $('#department').change((e:any) => {
                 console.log("department selected: "+ e.currentTarget.value);
                 this.departmentId = e.currentTarget.value
             });
-
-            $('#jobPosition').material_select();
-            $('#jobPosition').change((e:any) => {
-                console.log("job position selected: "+ e.currentTarget.value);
-                this.jobPosition = e.currentTarget.value
-            });
-            console.log("select is ready");
-            
-        },500);
-
-        $('.datepicker').pickadate({
-            selectYears: 15, // Creates a dropdown of 15 years to control year
+      $('#jobPosition').change((e:any) => {
+            console.log("job position selected: "+ e.currentTarget.value);
+            this.jobPosition = e.currentTarget.value
         });
-    
-        $('.datepicker').change((e:any) => {
-                this.birthdate = e.currentTarget.value;
-        });
-      });
     } 
 
      updateEmployee(){
+        console.log('updated firstName: '+this.firstName);
+        console.log('updated lastName: '+this.lastName);
+        console.log('updated age: '+this.age);
+        console.log('updated birthDate: '+this.birthDate);
+        console.log('updated jobPosition: '+this.jobPosition);
+        console.log('updated departmentId: '+this.departmentId);
+        
         this.employee = {
             "id":this.id,
             "lastName": this.firstName,

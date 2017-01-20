@@ -15,16 +15,11 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
     firstName: string;
     lastName:string;
 
-    dataLoaded:boolean = false;
-
     constructor(private dataService: DataService) { }
 
     ngOnInit() { 
-        this.dataService.getEmployees().subscribe(
-          (employees:IEmployee[]) => {
+        this.dataService.getEmployees().subscribe((employees:IEmployee[]) => {
             this.employees = employees;
-
-            this.dataLoaded = true;
         },
         error => {
             console.log('Failed to load employees.'+error);
@@ -35,7 +30,7 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
       $(document).ready(function() {
         $('.modal').modal();
         console.log(".modal is ready");
-        $('.tooltipped').tooltip({delay: 50});
+        $('.tooltipped').tooltip();
         console.log(".tooltipped is ready");
       });
     } 
