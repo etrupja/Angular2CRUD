@@ -86,7 +86,7 @@ export class ContractNewComponent implements OnInit,AfterViewInit {
              () => {
                         console.log('Contract '+this.contract.name+' was created successfully. ');
                         this.contractCreated = true;
-                        this.info = 'Department '+this.contract.name+' was created successfully. ';
+                        this.info = 'Contract '+this.contract.name+' was created successfully. ';
                     },
                     error => {
                         console.log('Failed while trying to create the contract. '+error);
