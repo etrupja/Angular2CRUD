@@ -52,3 +52,9 @@ Run them with `npm run e2e`.
 
 Shut it down manually with `Ctrl-C`.
 
+### Set up the application
+https://www.youtube.com/watch?v=AYgs0kLjTLE
+
+### Application demo
+https://www.youtube.com/watch?v=rBdjM05G1Dg&t=94s
+
