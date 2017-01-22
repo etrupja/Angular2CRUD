@@ -4,7 +4,7 @@
 
 In order to use this repository you need to first set up the API. API, can be found:
 ```
-https://github.com/etrupja/DotNetCore_EFCore_API
+https://github.com/etrupja/NetCoreAPI
 ```
 Set it up, following the instructions on the repository.
 
