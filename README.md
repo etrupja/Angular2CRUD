@@ -4,7 +4,7 @@
 
 In order to use this repository you need to first set up the API. API, can be found:
 ```
-https://github.com/etrupja/DotNetCore_EFCore_API
+https://github.com/etrupja/NetCoreAPI
 ```
 Set it up, following the instructions on the repository.
 
@@ -51,4 +51,10 @@ E2E tests are in the `e2e` directory, side by side with the `app` folder.
 Run them with `npm run e2e`.
 
 Shut it down manually with `Ctrl-C`.
+
+### Set up the application
+https://www.youtube.com/watch?v=AYgs0kLjTLE
+
+### Application demo
+https://www.youtube.com/watch?v=rBdjM05G1Dg&t=94s
 
