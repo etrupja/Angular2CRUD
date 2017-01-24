@@ -13,7 +13,6 @@ export class ContractsComponent implements OnInit,AfterViewInit {
     contractName:string;
 
     dataLoaded:boolean=false; //this is used for te spiner
-
     constructor(private dataService: DataService) { }
 
     ngOnInit() {
@@ -21,8 +20,10 @@ export class ContractsComponent implements OnInit,AfterViewInit {
             this.contracts = contracts;
             console.log('contracts loaded')
             this.dataLoaded = true;
+            Materialize.toast('Contracts loaded', 3000, 'green rounded')
         },
         error => {
+            Materialize.toast('Failed to load contracts', 3000, 'red rounded')
             console.log('Failed to load contrats'+error);
         });
      }
@@ -44,6 +45,8 @@ export class ContractsComponent implements OnInit,AfterViewInit {
         this.dataService.deleteContract(this.contractId)
             .subscribe(() => {
                 console.log('Contract was deleted successfully. ');
+                Materialize.toast('Contract deleted', 3000, 'green rounded')
+                
                 //Reload Contracts after one is deleted
                 this.dataService.getContracts().subscribe((contracts:IContract[]) => {
                         this.contracts = contracts;
@@ -53,6 +56,7 @@ export class ContractsComponent implements OnInit,AfterViewInit {
                     });
             },
             error => {
+                Materialize.toast('Contract deletion failed', 3000, 'red rounded')
                 console.log('Failed while trying to update the contracts. '+error);
             });
      }

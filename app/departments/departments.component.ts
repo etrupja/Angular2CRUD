@@ -18,8 +18,10 @@ export class DepartmentsComponent implements OnInit,AfterViewInit {
     ngOnInit() {
         this.dataService.getDepartments().subscribe((departments:IDepartment[]) => {
             this.departments = departments;
+             Materialize.toast('Departments loaded', 3000, 'green rounded')
         },
         error => {
+            Materialize.toast('Failed to load departments', 3000, 'red rounded')
             console.log('Failed to load departments '+error);
         });
      }
@@ -40,6 +42,7 @@ export class DepartmentsComponent implements OnInit,AfterViewInit {
         this.dataService.deleteDepartment(this.departmentId)
             .subscribe(() => {
                 console.log('Department was deleted successfully. ');
+                Materialize.toast('Department was deleted successfully', 3000, 'green rounded')
                 //Reload Department after one is deleted
                 this.dataService.getDepartments().subscribe((departments:IDepartment[]) => {
                         this.departments = departments;
@@ -49,7 +52,8 @@ export class DepartmentsComponent implements OnInit,AfterViewInit {
                     });
             },
             error => {
-                console.log('Failed while trying to update the department. '+error);
+                Materialize.toast('Failed to delete department', 3000, 'red rounded')
+                console.log('Failed to delete department. '+error);
             });
      }
 }

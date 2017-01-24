@@ -34,9 +34,10 @@ export class DepartmentNewComponent implements OnInit {
                 console.log('Department '+this.department.name+' was created successfully. ');
                 this.departmentCreated = true;
                 this.info = 'Department '+this.department.name+' was created successfully. ';
+                Materialize.toast('Department created', 3000, 'green rounded')
             },
             error => {
-                
+                Materialize.toast('Failed to create department', 3000, 'red rounded')
                 console.log('Failed while trying to update the department. '+error);
             });
 

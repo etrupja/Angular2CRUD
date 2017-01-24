@@ -95,8 +95,10 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
                 this.contractEdited = true;
                 console.log('Contract was updated successfully. ');
                 this.info = 'Contract '+this.contract.name+' was edited successfully';
+                Materialize.toast('Contract edited', 3000, 'green rounded')
             },
             error => {
+                Materialize.toast('Contract edit failed', 3000, 'red rounded')
                 console.log('Failed while trying to update the contract. '+error);
             });
      }

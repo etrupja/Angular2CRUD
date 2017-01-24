@@ -92,8 +92,10 @@ export class EmployeeNewComponent implements OnInit, AfterViewInit {
                         console.log('Employee '+this.employee.firstName+' was created successfully. ');
                         this.employeeCreated = true;
                         this.info = 'Employee '+this.employee.firstName+' was created successfully. ';
+                        Materialize.toast('Employee created', 3000, 'green rounded')
                     },
                     error => {
+                        Materialize.toast('Employee creation failed', 3000, 'red rounded')
                         console.log('Failed while trying to create the employee. '+error);
             });
      }

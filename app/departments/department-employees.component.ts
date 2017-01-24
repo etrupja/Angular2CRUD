@@ -20,8 +20,10 @@ export class DepartmentEmployeesComponent implements OnInit {
         this.id = +this.route.snapshot.params['id']
         this.dataService.getDepartmentEmployees(this.id).subscribe((employees:IEmployee[]) => {
             this.employees = employees;
+            Materialize.toast('Department employees loaded', 3000, 'green rounded')
         },
         error => {
+            Materialize.toast('Department employees loading failed', 3000, 'green rounded')
             console.log('Failed while trying to load Employees of department. '+error);
         });
      }

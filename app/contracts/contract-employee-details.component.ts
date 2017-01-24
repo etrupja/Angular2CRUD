@@ -32,9 +32,11 @@ export class ContractEmployeeDetailsComponent implements OnInit {
             this.birthDate = employee.birthDate;
             this.jobPosition = employee.jobPosition;
             this.departmentName = employee.department.name;
+            Materialize.toast('Employee loaded', 3000, 'green rounded')
 
         },
         error => {
+            Materialize.toast('Employee load failed', 3000, 'red rounded')
             console.log('Failed to load contrats'+error);
         });
      }

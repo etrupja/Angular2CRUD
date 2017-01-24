@@ -20,8 +20,10 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
     ngOnInit() { 
         this.dataService.getEmployees().subscribe((employees:IEmployee[]) => {
             this.employees = employees;
+             Materialize.toast('Employees loaded', 3000, 'green rounded')
         },
         error => {
+             Materialize.toast('Failed to load employees', 3000, 'red rounded')
             console.log('Failed to load employees.'+error);
         });
     }
@@ -43,6 +45,7 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
         this.dataService.deleteEmployee(this.employeeId)
             .subscribe(() => {
                 console.log('Employee was deleted successfully. ');
+                Materialize.toast('Employee deleted', 3000, 'green rounded')
                 //Reload Employees after one is deleted
                 this.dataService.getEmployees().subscribe((employees:IEmployee[]) => {
                         this.employees = employees;
@@ -52,6 +55,7 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
                     });
             },
             error => {
+                Materialize.toast('Employee deletion failed', 3000, 'red rounded')
                 console.log('Failed while trying to delete the employee. '+error);
             });
      }

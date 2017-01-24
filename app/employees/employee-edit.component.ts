@@ -83,13 +83,6 @@ export class EmployeeEditComponent implements OnInit, AfterViewInit {
     } 
 
      updateEmployee(){
-        console.log('updated firstName: '+this.firstName);
-        console.log('updated lastName: '+this.lastName);
-        console.log('updated age: '+this.age);
-        console.log('updated birthDate: '+this.birthDate);
-        console.log('updated jobPosition: '+this.jobPosition);
-        console.log('updated departmentId: '+this.departmentId);
-        
         this.employee = {
             "id":this.id,
             "lastName": this.firstName,
@@ -104,8 +97,10 @@ export class EmployeeEditComponent implements OnInit, AfterViewInit {
                 this.employeeEdited = true;
                 console.log('Employee was updated successfully. ');
                 this.info = 'Employee '+this.employee.firstName+' '+this.employee.lastName+' was updated successfully!';
+                 Materialize.toast('Employee edited', 3000, 'green rounded')
             },
             error => {
+                Materialize.toast('Employee edit failed', 3000, 'red rounded')
                 console.log('Failed while trying to update the employee. '+error);
             });
      }

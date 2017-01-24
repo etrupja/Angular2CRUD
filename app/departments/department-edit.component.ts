@@ -26,8 +26,11 @@ export class DepartmentEditComponent implements OnInit {
 
             this.name = department.name;
             this.description = department.description;
+
+            Materialize.toast('Department loaded', 3000, 'green rounded')
         },
         error => {
+            Materialize.toast('Department load failed', 3000, 'red rounded')
             console.log('Failed while trying to load the department. '+error);
         });
      }
@@ -40,8 +43,10 @@ export class DepartmentEditComponent implements OnInit {
                 this.departmentEdited = true;
                 console.log('Department was updated successfully. ');
                 this.info = 'Department '+this.department.name+ ' was edited successfully!';
+                Materialize.toast('Department updated', 3000, 'green rounded')
             },
             error => {
+                Materialize.toast('Department update failed', 3000, 'red rounded')
                 console.log('Failed while trying to update the department. '+error);
             });
 

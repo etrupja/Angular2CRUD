@@ -71,9 +71,6 @@ export class ContractNewComponent implements OnInit,AfterViewInit {
     }
 
      newContract(){
-        console.log('startDate '+this.startDate);
-        console.log('endDate '+this.endDate);
-
         this.contract = {
             "name": this.name,
             "startDate": this.startDate,
@@ -87,8 +84,11 @@ export class ContractNewComponent implements OnInit,AfterViewInit {
                         console.log('Contract '+this.contract.name+' was created successfully. ');
                         this.contractCreated = true;
                         this.info = 'Contract '+this.contract.name+' was created successfully. ';
+                        Materialize.toast('Contract created', 3000, 'green rounded')
+
                     },
                     error => {
+                        Materialize.toast('Contract creation failed', 3000, 'red rounded')
                         console.log('Failed while trying to create the contract. '+error);
             });
      }
