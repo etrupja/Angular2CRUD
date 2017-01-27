@@ -18,7 +18,6 @@ export class EmployeeNewComponent implements OnInit, AfterViewInit {
     //Api properties
      firstName:string;
      lastName: string;
-     age: number;
      birthdate: Date;
      date: Date;
      jobPosition: string;
@@ -80,7 +79,6 @@ export class EmployeeNewComponent implements OnInit, AfterViewInit {
         this.employee = {
             "lastName": this.firstName,
             "firstName": this.lastName,
-            "age": this.age,
             "birthDate": this.birthdate,
             "jobPosition": this.jobPosition,
             "departmentId": this.departmentId

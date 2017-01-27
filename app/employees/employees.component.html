@@ -5,7 +5,6 @@
     <tr>
         <th data-field="firstName">First Name</th>
         <th data-field="lastName">Last Name</th>
-        <th data-field="age">Age</th>
         <th data-field="birthDate">Birthdate</th>
         <th data-field="jobPosition">Job Position</th>
         <th data-field="departmentName">Department</th>
@@ -18,7 +17,6 @@
     <tr *ngFor="let employee of employees">
       <td contenteditable='true'>{{employee.firstName}}</td>
       <td>{{employee.lastName}}</td>
-      <td>{{employee.age}}</td>
       <td>{{employee.birthDate | date }}</td>
       <td>{{employee.jobPosition}}</td>
       <td>{{employee.department.name}}</td>

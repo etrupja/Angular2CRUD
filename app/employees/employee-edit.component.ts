@@ -13,7 +13,6 @@ export class EmployeeEditComponent implements OnInit, AfterViewInit {
      id: number;              //Identifies which department was selected
      lastName:string;
      firstName:string;
-     age: number;
      birthDate: Date;
      jobPosition: string;
      department:string;
@@ -36,7 +35,6 @@ export class EmployeeEditComponent implements OnInit, AfterViewInit {
             console.log('Employee loaded with success. ');
             this.firstName = employee.firstName;
             this.lastName = employee.lastName;
-            this.age = employee.age;
             this.birthDate = employee.birthDate;
             this.jobPosition = employee.jobPosition;
             this.departmentId = employee.department.id;
@@ -87,7 +85,6 @@ export class EmployeeEditComponent implements OnInit, AfterViewInit {
             "id":this.id,
             "lastName": this.firstName,
             "firstName": this.lastName,
-            "age": this.age,
             "birthDate": this.birthDate,
             "jobPosition": this.jobPosition,
             "departmentId": this.departmentId

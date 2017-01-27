@@ -17,7 +17,6 @@ export interface IEmployee {
      id?: number;
      lastName: string;
      firstName: string;
-     age: number;
      birthDate: Date;
      jobPosition: string;
      departmentId:number;
@@ -29,7 +28,6 @@ export class Employee {
      id: number;
      lastName: string;
      firstName: string;
-     age: number;
      birthDate: Date;
      jobPosition: string;
      department:string;
