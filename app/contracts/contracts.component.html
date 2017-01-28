@@ -12,6 +12,13 @@
 
 <h4 *ngIf="dataLoaded">Contracts </h4>
 
+<div class="row ">
+  <div class="input-field inline">
+    <input #filterString id="filter" type="text" class="validate" (input)="filterTable(filterString.value)" />
+    <label for="filter">Filter by name </label>
+  </div>
+</div>
+
 <div *ngIf="dataLoaded" class="row">
         <div class="col s3 m3" *ngFor="let contract of contracts">
         <div class="card darken-1 z-depth-3">

@@ -9,6 +9,7 @@ import { IContract } from '../shared/interfaces';
 })
 export class ContractsComponent implements OnInit,AfterViewInit {
     contracts: IContract[];
+    contractsFilter: IContract[];
     contractId:number;
     contractName:string;
 
@@ -18,6 +19,7 @@ export class ContractsComponent implements OnInit,AfterViewInit {
     ngOnInit() {
         this.dataService.getContracts().subscribe((contracts:IContract[]) => {
             this.contracts = contracts;
+            this.contractsFilter = contracts;
             console.log('contracts loaded')
             this.dataLoaded = true;
             Materialize.toast('Contracts loaded', 3000, 'green rounded')
@@ -34,6 +36,15 @@ export class ContractsComponent implements OnInit,AfterViewInit {
             console.log(".modal is ready");
        });
     } 
+
+    filterTable(filter:string){
+        console.log(filter);
+        if(filter.length == 0){
+            this.contracts = this.contractsFilter;
+        }else{
+            this.contracts = this.contractsFilter.filter(item => item.name.toLowerCase().indexOf(filter.toLowerCase()) > -1 )
+        }
+    }
 
     setContractData(id:number,name:string){
         this.contractId = id;
