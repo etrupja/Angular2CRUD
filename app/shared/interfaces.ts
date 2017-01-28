@@ -5,14 +5,6 @@ export interface IDepartment {
     employees?: number;
 }
 
-export class Department {
-    id: number;
-    name: string;
-    description:string;
-  
-}
-
-
 export interface IEmployee {
      id?: number;
      lastName: string;
@@ -24,15 +16,6 @@ export interface IEmployee {
      contracts?: number[];
 }
 
-export class Employee {
-     id: number;
-     lastName: string;
-     firstName: string;
-     birthDate: Date;
-     jobPosition: string;
-     department:string;
-}
-
 export interface IContract{
     id?:number;
     name:string;
@@ -41,24 +24,4 @@ export interface IContract{
     amount:number;
     employeeId:number;
     employee?:string
-}
-
-
-export class DropDown{
-    public value:number;
-    public label:string;
-    constructor(value: number, label: string) {
-        this.value = value;
-        this.label = label;
-    }
-}
-
-
-
-
-
-
-
-export interface Predicate<T> {
-    (item: T): boolean
 }

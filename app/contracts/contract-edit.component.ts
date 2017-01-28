@@ -28,7 +28,6 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
     ngOnInit() {
 
         this.dataService.getEmployees().subscribe((employees:IEmployee[])=>{
-             console.log('employees loaded.');
              this.employees= employees; 
          },
          error=>{
@@ -42,8 +41,6 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
             this.startDate= contract.startDate;
             this.endDate= contract.endDate;
             this.employeeId = contract.employeeId;
-            console.log('contract loaded. ');
-            console.log('contract name: '+this.name);
         },
         error => {
             console.log('Failed while trying to load the contract. '+error);
@@ -68,14 +65,11 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
       });
       $('#startDate').change((e:any) => {
                 this.startDate = e.currentTarget.value;
-                console.log(this.startDate);
         });
        $('#endDate').change((e:any) => {
                this.endDate = e.currentTarget.value;
-               console.log(this.endDate);
        });
        $('#employee').change((e:any) => {
-                console.log("employee selected: "+ e.currentTarget.value);
                 this.employeeId = e.currentTarget.value
             });
     } 
@@ -93,7 +87,6 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
          this.dataService.updateContract(this.contract)
          .subscribe(() => {
                 this.contractEdited = true;
-                console.log('Contract was updated successfully. ');
                 this.info = 'Contract '+this.contract.name+' was edited successfully';
                 Materialize.toast('Contract edited', 3000, 'green rounded')
             },

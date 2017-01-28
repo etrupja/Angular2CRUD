@@ -75,6 +75,8 @@ export class EmployeeNewComponent implements OnInit, AfterViewInit {
         });
     }
 
+    
+
      newEmployee(){
         this.employee = {
             "lastName": this.firstName,
