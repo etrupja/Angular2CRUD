@@ -1,5 +1,12 @@
 <h4>Employees <h4>
 
+<div class="right">
+  <div class="input-field inline">
+    <input #filterString id="filter" type="text" class="validate" (input)="filterTable(filterString.value)">
+    <label for="filter" >Filter by first/last name </label>
+  </div>
+</div>
+
 <table class="striped highlight centered responsive-table z-depth-2" style="font-size: 20px;">
   <thead>
     <tr>
@@ -14,7 +21,7 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let employee of employees">
+    <tr *ngFor="let employee of employees ">
       <td contenteditable='true'>{{employee.firstName}}</td>
       <td>{{employee.lastName}}</td>
       <td>{{employee.birthDate | date }}</td>

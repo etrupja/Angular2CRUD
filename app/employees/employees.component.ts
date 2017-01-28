@@ -10,6 +10,7 @@ import { IEmployee } from '../shared/interfaces';
 export class EmployeesComponent implements OnInit,AfterViewInit {
     
     employees: IEmployee[];
+    employeesFilter: IEmployee[] //used for filtering
 
     employeeId:number;
     firstName: string;
@@ -20,6 +21,7 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
     ngOnInit() { 
         this.dataService.getEmployees().subscribe((employees:IEmployee[]) => {
             this.employees = employees;
+            this.employeesFilter = employees; 
              Materialize.toast('Employees loaded', 3000, 'green rounded')
         },
         error => {
@@ -27,6 +29,23 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
             console.log('Failed to load employees.'+error);
         });
     }
+
+    filterTable(filter:string){
+        console.log(filter);
+        if(filter.length == 0){
+            this.employees = this.employeesFilter;
+        }else{
+
+            this.employees = this.employeesFilter.filter(item => item.firstName.toLowerCase().indexOf(filter.toLowerCase()) > -1 || 
+                                                         item.lastName.toLowerCase().indexOf(filter.toLowerCase()) > -1 )
+        }
+    }
+
+
+    filterByFirstOrLastName(filterString:string){
+        this.employees = this.employees.filter(filter=>filter.firstName == filterString)
+    }
+
 
     ngAfterViewInit() {
       $(document).ready(function() {
