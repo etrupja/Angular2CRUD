@@ -1,5 +1,12 @@
 <h4 >Departments <h4>
 
+<div class="row ">
+  <div class="input-field inline">
+    <input #filterString id="filter" type="text" class="validate" (input)="filterTable(filterString.value)" />
+    <label for="filter">Filter by name </label>
+  </div>
+</div>
+
 <div class="row">
         <div class="col s12 m4 " *ngFor="let department of departments">
                 <div class="card z-depth-3">

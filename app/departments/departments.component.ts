@@ -11,6 +11,8 @@ import {DepartmentEmployeesComponent} from './department-employees.component';
 })
 export class DepartmentsComponent implements OnInit,AfterViewInit {
      departments: IDepartment[];
+    departmentsFilter:IDepartment[];
+
      departmentId:number;
      departmentName:string;
     
@@ -18,6 +20,7 @@ export class DepartmentsComponent implements OnInit,AfterViewInit {
     ngOnInit() {
         this.dataService.getDepartments().subscribe((departments:IDepartment[]) => {
             this.departments = departments;
+            this.departmentsFilter = departments;
              Materialize.toast('Departments loaded', 3000, 'green rounded')
         },
         error => {
@@ -32,6 +35,15 @@ export class DepartmentsComponent implements OnInit,AfterViewInit {
             console.log(".modal is ready");
        });
     } 
+
+    filterTable(filter:string){
+        console.log(filter);
+        if(filter.length == 0){
+            this.departments = this.departmentsFilter;
+        }else{
+            this.departments = this.departmentsFilter.filter(item => item.name.toLowerCase().indexOf(filter.toLowerCase()) > -1 )
+        }
+    }
 
     setDepartmentData(id:number,name:string){
         this.departmentId = id;
