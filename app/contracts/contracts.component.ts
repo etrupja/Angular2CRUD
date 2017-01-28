@@ -37,7 +37,7 @@ export class ContractsComponent implements OnInit,AfterViewInit {
        });
     } 
 
-    filterTable(filter:string){
+    filterContracts(filter:string){
         console.log(filter);
         if(filter.length == 0){
             this.contracts = this.contractsFilter;

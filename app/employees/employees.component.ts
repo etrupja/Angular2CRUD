@@ -30,7 +30,7 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
         });
     }
 
-    filterTable(filter:string){
+    filterEmployees(filter:string){
         console.log(filter);
         if(filter.length == 0){
             this.employees = this.employeesFilter;

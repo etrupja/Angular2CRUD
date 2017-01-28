@@ -36,7 +36,7 @@ export class DepartmentsComponent implements OnInit,AfterViewInit {
        });
     } 
 
-    filterTable(filter:string){
+    filterDepartments(filter:string){
         console.log(filter);
         if(filter.length == 0){
             this.departments = this.departmentsFilter;
