@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {IContract,IEmployee,IDepartment} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-
+import { Location } from '@angular/common';
 
 @Component({
     moduleId: module.id,
@@ -27,7 +27,13 @@ export class ContractNewComponent implements OnInit,AfterViewInit {
     //Drop downs
     employees: IEmployee[];
     
-    constructor(private dataService: DataService, private route: ActivatedRoute) { }
+    constructor(private dataService: DataService, 
+                private route: ActivatedRoute,
+                private location: Location) { }
+
+    goBack(): void{
+        this.location.back();
+    }
 
     selectedEmployee(item:any) { this.employeeId = item.value; } //a job position is selected
 

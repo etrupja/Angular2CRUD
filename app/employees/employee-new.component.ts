@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterViewInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {IEmployee,Employee,IDepartment, Department,DropDown} from '../shared/interfaces';
+import {IEmployee,IDepartment,} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MdButton } from '@angular2-material/button';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -31,7 +32,14 @@ export class EmployeeNewComponent implements OnInit, AfterViewInit {
 
      
 
-    constructor(private dataService: DataService, private route: ActivatedRoute) { }
+    constructor(private dataService: DataService, 
+                private route: ActivatedRoute,
+                private location: Location) { }
+
+    goBack(): void{
+        this.location.back();
+    }
+
 
      ngOnInit() { 
          this.dataService.getDepartments().subscribe((departments:IDepartment[])=>{

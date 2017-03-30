@@ -51,7 +51,7 @@
             <button [disabled]="employeeEdited"  class="btn waves-effect waves-light right" type="submit" name="action" (click)="updateEmployee()">Save Changes
                 <i class="material-icons right">send</i>
             </button>
-            <a md-button class="btn right" [routerLink]="['/employees']"><i class="material-icons left">keyboard_return</i>Back</a>
+            <a md-button class="btn right" (click)="goBack()"><i class="material-icons left">keyboard_return</i>Back</a>
     </div>
     </form>
   </div>

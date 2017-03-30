@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {IDepartment,Department} from '../shared/interfaces';
+import {IDepartment} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { DataService } from '../shared/data_services/data.service';
     selector: 'department-new',
     templateUrl: 'department-new.component.html'
 })
-export class DepartmentNewComponent implements OnInit {
+export class DepartmentNewComponent {
      name:string;
      description: string;
      department: IDepartment;
@@ -18,9 +19,13 @@ export class DepartmentNewComponent implements OnInit {
      departmentCreated:boolean =false;
 
     
-    constructor(private dataService: DataService, private route: ActivatedRoute) { }
+    constructor(private dataService: DataService, 
+                private route: ActivatedRoute,
+                private location: Location) { }
 
-     ngOnInit() { }
+     goBack(): void{
+        this.location.back();
+    }
 
      newDepartment(_name:string, _description:string){
 

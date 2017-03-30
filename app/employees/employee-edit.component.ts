@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Employee, IEmployee,IDepartment} from '../shared/interfaces';
+import { IEmployee,IDepartment} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
-
+import { Location } from '@angular/common';
 
 @Component({
     moduleId: module.id,
@@ -26,8 +26,11 @@ export class EmployeeEditComponent implements OnInit, AfterViewInit {
      info:string = '';
      employeeEdited:boolean =false;
 
-    constructor(private dataService: DataService, private route: ActivatedRoute) { }
+    constructor(private dataService: DataService, private route: ActivatedRoute, private location: Location) { }
 
+    goBack(): void {
+        this.location.back();     
+    }
     ngOnInit() {
         this.id = +this.route.snapshot.params['id'];
 
@@ -51,6 +54,8 @@ export class EmployeeEditComponent implements OnInit, AfterViewInit {
             console.log('Failed to load departments '+error);
          })
      }
+
+     
 
      ngAfterViewInit() {
       $(document).ready(function() {

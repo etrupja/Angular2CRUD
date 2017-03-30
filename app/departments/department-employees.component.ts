@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {IDepartment,IEmployee} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
-
+import { Location } from '@angular/common';
 
 @Component({
     moduleId: module.id,
@@ -14,7 +14,13 @@ export class DepartmentEmployeesComponent implements OnInit {
      id: number;
     
     constructor(private dataService: DataService,
-                private route: ActivatedRoute) { }
+                private route: ActivatedRoute,
+                private location: Location) { }
+
+
+    goBack(): void{
+        this.location.back();
+    }
 
     ngOnInit() {
         this.id = +this.route.snapshot.params['id']

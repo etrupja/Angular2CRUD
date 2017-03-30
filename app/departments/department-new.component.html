@@ -22,7 +22,7 @@
             <button [disabled]="departmentCreated" class="btn waves-effect waves-light right" type="submit" name="action" (click)="newDepartment(name,description)">Create Department
                 <i class="material-icons right">send</i>
             </button>
-            <a md-button class="btn right waves-effect waves-light" [routerLink]="['/departments']"><i class="material-icons left">keyboard_return</i>Back</a>
+            <a md-button class="btn right waves-effect waves-light" (click)="goBack()"><i class="material-icons left">keyboard_return</i>Back</a>
     </div>
     </form>
 </div>

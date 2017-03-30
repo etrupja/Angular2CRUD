@@ -2,7 +2,7 @@ import { Component, OnInit,AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IEmployee,IContract} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
-
+import {Location} from '@angular/common';
 
 @Component({
     moduleId: module.id,
@@ -23,7 +23,13 @@ export class ContractEditComponent implements OnInit,AfterViewInit {
      contractEdited:boolean =false;
 
      contract:IContract; //this will be sent to the API
-     constructor(private dataService: DataService, private route: ActivatedRoute) { }
+     constructor(private dataService: DataService, 
+                private route: ActivatedRoute,
+                private location: Location) { }
+
+    goBack(): void{
+        this.location.back();
+    }
 
     ngOnInit() {
 

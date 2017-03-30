@@ -1,6 +1,6 @@
 <h4>Employees<h4>
 <a md-button class="btn waves-effect waves-light" [routerLink]="['/home']"><i class="material-icons left">home</i>Home</a>
-<a md-button class="btn waves-effect waves-light" [routerLink]="['/departments']"><i class="material-icons left">keyboard_return</i>Back</a>
+<a md-button class="btn waves-effect waves-light" (click)="goBack()"><i class="material-icons left">keyboard_return</i>Back</a>
 
 <table class="striped highlight centered responsive-table">
   <thead>
