@@ -13,7 +13,7 @@
                         <div class="card-content">
                                 <span class="card-title">
                                         <b>{{department.name}}</b> 
-                                        <a href="#deleteDepartment" (click)="setDepartmentData(department.id,department.name)"><i class="small material-icons right red-text">delete</i></a>
+                                        <a (click)="removeDepartment(department)"><i class="small material-icons right red-text">delete</i></a>
                                 </span>
                                 <p> {{department.description}} </p>
                         </div>
@@ -31,20 +31,6 @@
       <i class="large material-icons">add</i>
     </a>
 </div>
-
-
-<!-- Delete Department Modal -->
-  <div id="deleteDepartment" class="modal" style="border-radius: 25px 25px 0px 0px;">
-    <div class="modal-content">
-      <h4>Delete {{departmentName}} department?</h4>
-      <p>Are you sure that you want to delete this department? </p>
-    </div>
-    <div class="modal-footer">
-      <a (click)="removeDepartment()" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-      <a [routerLink]="['/departments']" class=" modal-action modal-close waves-effect waves-red btn-flat ">Decline</a>
-    </div>
-  </div>
-
 
 <!--This div is used to display toastr message-->
 <div id="toast-container" style="top: auto !important; left: auto !important; bottom: 10%; right:5%;"></div>

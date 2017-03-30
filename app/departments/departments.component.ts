@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {IDepartment} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
 import {DepartmentEmployeesComponent} from './department-employees.component';
@@ -9,12 +9,10 @@ import {DepartmentEmployeesComponent} from './department-employees.component';
     selector: 'departments',
     templateUrl: 'departments.component.html'
 })
-export class DepartmentsComponent implements OnInit,AfterViewInit {
+export class DepartmentsComponent implements OnInit {
      departments: IDepartment[];
-    departmentsFilter:IDepartment[];
-
-     departmentId:number;
-     departmentName:string;
+     departmentsFilter:IDepartment[];
+     selectedDepartment: IDepartment;
     
     constructor(private dataService: DataService) { }
     ngOnInit() {
@@ -29,13 +27,6 @@ export class DepartmentsComponent implements OnInit,AfterViewInit {
         });
      }
 
-     ngAfterViewInit() {
-          $(document).ready(function() {
-            $('.modal').modal();
-            console.log(".modal is ready");
-       });
-    } 
-
     filterDepartments(filter:string){
         console.log(filter);
         if(filter.length == 0){
@@ -45,17 +36,11 @@ export class DepartmentsComponent implements OnInit,AfterViewInit {
         }
     }
 
-    setDepartmentData(id:number,name:string){
-        this.departmentId = id;
-        this.departmentName = name;
-    }
-
-     removeDepartment(){
-        this.dataService.deleteDepartment(this.departmentId)
+     removeDepartment(department: IDepartment): void{
+         this.selectedDepartment = department;
+        this.dataService.deleteDepartment(this.selectedDepartment.id)
             .subscribe(() => {
-                console.log('Department was deleted successfully. ');
                 Materialize.toast('Department was deleted successfully', 3000, 'green rounded')
-                //Reload Department after one is deleted
                 this.dataService.getDepartments().subscribe((departments:IDepartment[]) => {
                         this.departments = departments;
                     },
@@ -64,8 +49,7 @@ export class DepartmentsComponent implements OnInit,AfterViewInit {
                     });
             },
             error => {
-                Materialize.toast('Failed to delete department', 3000, 'red rounded')
-                console.log('Failed to delete department. '+error);
+                Materialize.toast('Department you want to delete has employees assigned.', 3000, 'red rounded')
             });
      }
 }

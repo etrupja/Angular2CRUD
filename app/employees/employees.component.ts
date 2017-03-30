@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { DataService } from '../shared/data_services/data.service';
 import { IEmployee } from '../shared/interfaces';
 
@@ -7,14 +7,11 @@ import { IEmployee } from '../shared/interfaces';
     selector: 'employees',
     templateUrl: 'employees.component.html'
 })
-export class EmployeesComponent implements OnInit,AfterViewInit {
+export class EmployeesComponent implements OnInit {
     
     employees: IEmployee[];
     employeesFilter: IEmployee[] //used for filtering
-
-    employeeId:number;
-    firstName: string;
-    lastName:string;
+    selectedEmployee: IEmployee;
 
     constructor(private dataService: DataService) { }
 
@@ -28,6 +25,10 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
              Materialize.toast('Failed to load employees', 3000, 'red rounded')
             console.log('Failed to load employees.'+error);
         });
+    }
+
+    onSelect(employee:IEmployee):void{
+        this.selectedEmployee = employee;
     }
 
     filterEmployees(filter:string){
@@ -46,22 +47,9 @@ export class EmployeesComponent implements OnInit,AfterViewInit {
         this.employees = this.employees.filter(filter=>filter.firstName == filterString)
     }
 
-
-    ngAfterViewInit() {
-      $(document).ready(function() {
-        $('.modal').modal();
-        console.log(".modal is ready");
-      });
-    } 
-
-    setEmployeeData(id:number,fName:string,lName:string){
-            this.employeeId = id;
-            this.firstName = fName;
-            this.lastName = lName;
-        }
-
-    removeEmployee(){
-        this.dataService.deleteEmployee(this.employeeId)
+    removeEmployee(employee:IEmployee):void {
+        this.selectedEmployee = employee;
+        this.dataService.deleteEmployee(this.selectedEmployee.id)
             .subscribe(() => {
                 console.log('Employee was deleted successfully. ');
                 Materialize.toast('Employee deleted', 3000, 'green rounded')
