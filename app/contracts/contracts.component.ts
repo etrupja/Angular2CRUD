@@ -11,15 +11,12 @@ export class ContractsComponent implements OnInit {
     contracts: IContract[];
     contractsFilter: IContract[];
     selectedContract:IContract;
-
-    dataLoaded:boolean=false; //this is used for te spiner
     constructor(private dataService: DataService) { }
 
     ngOnInit() {
         this.dataService.getContracts().subscribe((contracts:IContract[]) => {
             this.contracts = contracts;
             this.contractsFilter = contracts;
-            this.dataLoaded = true;
             Materialize.toast('Contracts loaded', 3000, 'green rounded')
         },
         error => {

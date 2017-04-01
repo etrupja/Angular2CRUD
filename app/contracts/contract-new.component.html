@@ -3,18 +3,18 @@
     <form #form="ngForm" class="col s12" novalidate>
       <div class="row">
         <div class="input-field col s12 m12">
-          <input id="name" type="text" class="form-control validate" name="name" [(ngModel)]="name" required>
+          <input type="text" class="form-control validate" #name required>
           <label class="active" for="name">Contract title</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s6 m6">
-            <input id="startDate" active type="date" class="datepicker" >
+            <input id="startDate" active type="date" class="datepicker" #startDate>
             <label  class="active" for="startDate">Start date</label>            
         </div>
         <div class="input-field col s6 m6">
-            <input id="endDate" active type="date" class="datepicker" >
+            <input id="endDate" active type="date" class="datepicker" #endDate>
             <label  class="active" for="endDate">End date</label>            
         </div>
     </div>
@@ -22,15 +22,13 @@
       <div class="row">
 
         <div class="input-field col s6 m6">
-            <select id="employee">
-                <option value="" disabled selected>Choose an employee</option>
-                <option *ngFor="let emp of employees" [value]="emp.id">{{emp.firstName}} {{emp.lastName}}</option>
-            </select>
-            <label  class="active" for="employee">Employee</label>            
+            <select class="form-control" id="employee" required #employeeId>
+                <option *ngFor="let dpt of employees" [value]="dpt.id">{{dpt.firstName}} {{dpt.lastName}}</option>
+            </select>           
         </div>
-
+ 
         <div class="input-field col s6 m6">
-          <input id="amount" type="number" class="form-control validate" name="amount" [(ngModel)]="amount" required>
+          <input id="amount" type="number" class="form-control validate" name="amount" #amount required>
           <label class="active" for="amount">Annual gross salary</label>
         </div>
         
@@ -39,14 +37,13 @@
         
     <div class="row">
             <div class="card-panel teal lighten-2 col s6 m6 l6" *ngIf="contractCreated" >{{info}}</div>
-            <button class="btn waves-effect waves-light right" type="submit" name="action" (click)="newContract()">Create Contract
+            <button class="btn waves-effect waves-light right" type="submit" name="action" (click)="newContract(name.value, startDate.value, endDate.value, amount.value, employeeId.value)">Create Contract
                 <i class="material-icons right">send</i>
             </button>
             <a md-button class="btn right waves-effect waves-light" (click)="goBack()"><i class="material-icons left">keyboard_return</i>Back</a>
         </div>
     </form>
 </div>
-
 
  <!--This div is used to display toastr message-->
   <div id="toast-container" style="top: auto !important; left: auto !important; bottom: 10%; right:5%;"></div>

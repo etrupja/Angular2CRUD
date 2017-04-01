@@ -37,7 +37,7 @@ export class DepartmentsComponent implements OnInit {
     }
 
      removeDepartment(department: IDepartment): void{
-         this.selectedDepartment = department;
+        this.selectedDepartment = department;
         this.dataService.deleteDepartment(this.selectedDepartment.id)
             .subscribe(() => {
                 Materialize.toast('Department was deleted successfully', 3000, 'green rounded')

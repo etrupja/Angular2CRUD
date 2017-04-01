@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {IContract,IEmployee,IDepartment} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
@@ -10,17 +10,10 @@ import { Location } from '@angular/common';
     selector: 'contract-new',
     templateUrl: 'contract-new.component.html'
 })
-export class ContractNewComponent implements OnInit,AfterViewInit {
+export class ContractNewComponent implements OnInit {
     
     contract: IContract; //Object that will be sent to API
-
-    //Api properties
-    name:string;
-    startDate:Date;
-    endDate:Date;
-    amount:number;
-    employeeId:number;
-
+    contracts:IContract[];
     info:string = '';
     contractCreated:boolean =false;
 
@@ -35,7 +28,6 @@ export class ContractNewComponent implements OnInit,AfterViewInit {
         this.location.back();
     }
 
-    selectedEmployee(item:any) { this.employeeId = item.value; } //a job position is selected
 
      ngOnInit() { 
          this.dataService.getEmployees().subscribe((employees:IEmployee[])=>{
@@ -46,56 +38,9 @@ export class ContractNewComponent implements OnInit,AfterViewInit {
          })
      }
 
-     ngAfterViewInit() {
-      $(document).ready(function() {
-        window.setTimeout(() => {
-            $('#employee').material_select();
-            console.log("select is ready");
-        },1000);
-      });
-
-       $('#employee').change((e:any) => {
-            this.employeeId = e.currentTarget.value;
-            console.log("this.employeeId: "+ this.employeeId);
+     newContract(name:string, startDate:Date, endDate:Date,amount:number, employeeId:number){
+         this.dataService.createContract(name, startDate, endDate,amount, employeeId).then(ctr => {
+            this.contracts.push(ctr);
         });
-
-        //datepicket
-        $('#startDate').pickadate({
-            selectYears: 15, 
-          });
-        $('#endDate').pickadate({
-            selectYears: 15,
-        });
-
-        $('#startDate').change((e:any) => {
-             this.startDate = e.currentTarget.value;
-        });
-
-        $('#endDate').change((e:any) => {
-             this.endDate = e.currentTarget.value;
-        });
-    }
-
-     newContract(){
-        this.contract = {
-            "name": this.name,
-            "startDate": this.startDate,
-            "endDate": this.endDate,
-            "amount": this.amount,
-            "employeeId": this.employeeId
-        }
-
-         this.dataService.createContract(this.contract).subscribe(
-             () => {
-                        console.log('Contract '+this.contract.name+' was created successfully. ');
-                        this.contractCreated = true;
-                        this.info = 'Contract '+this.contract.name+' was created successfully. ';
-                        Materialize.toast('Contract created', 3000, 'green rounded')
-
-                    },
-                    error => {
-                        Materialize.toast('Contract creation failed', 3000, 'red rounded')
-                        console.log('Failed while trying to create the contract. '+error);
-            });
      }
 }

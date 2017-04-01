@@ -116,18 +116,11 @@ getEmployee(id: number): Observable<IEmployee> {
 
     //create a new Employee
 createEmployee(firstName:string, lastName:string, birthDate:Date, jobPosition:any, departmentId:number): Promise<IEmployee> {
-
-    console.log(firstName);
-    console.log(lastName);
-    console.log(birthDate);
-    console.log(jobPosition);
-    console.log(departmentId);
-
     let body = JSON.stringify({firstName:firstName, 
-                                            lastName:lastName, 
-                                            birthDate:birthDate, 
-                                            jobPosition:jobPosition, 
-                                            departmentId:departmentId});
+                                lastName:lastName, 
+                                birthDate:birthDate, 
+                                jobPosition:jobPosition, 
+                                departmentId:departmentId});
 
     return this.http.post(this._baseUrl + 'employee/', body, {headers: this.headers })
         .toPromise()
@@ -190,18 +183,19 @@ getContract(id: number): Observable<IContract> {
 
 
     //create a new Contract
-createContract(contract: IContract): Observable<IContract> {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+createContract(name:string, startDate:Date, endDate:Date,amount:number, employeeId:number): Promise<IContract> {
+    let contract = JSON.stringify({
+                                    name:name,
+                                    startDate:startDate,
+                                    endDate:endDate,
+                                    amount:amount,
+                                    employeeId:employeeId
+                                });
 
-    return this.http.post(this._baseUrl + 'contract/', JSON.stringify(contract), {
-        headers: headers
-    })
-        .map((res: Response) => {
-            
-            return res.json();
-        })
-        .catch(this.handleError);
+    return this.http.post(this._baseUrl + 'contract/', contract, { headers: this.headers})
+                .toPromise()
+                .then(res => res.json().date as IContract)
+                .catch(this.handleError);
 }
 
 //updates a contract
