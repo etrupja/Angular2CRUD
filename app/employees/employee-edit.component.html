@@ -4,19 +4,19 @@
     <form #form="ngForm" class="col s12" novalidate>
       <div class="row">
         <div class="input-field col s6 m6">
-          <input [disabled]="employeeEdited" id="firstName" type="text" class="form-control validate" name="firstName" [(ngModel)]="firstName">
+          <input id="firstName" type="text" class="form-control validate" name="firstName" [(ngModel)]="firstName">
           <label class="active" for="firstName">Employee's First Name</label>
         </div>
 
         <div class="input-field col s6 m6">
-          <input [disabled]="employeeEdited" id="lastName" type="text" class="form-control validate" name="lastName" [(ngModel)]="lastName">
+          <input id="lastName" type="text" class="form-control validate" name="lastName" [(ngModel)]="lastName">
           <label class="active" for="lastName">Employee's Last Name</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input [disabled]="employeeCreated" id="birthdate" active type="date" [ngModel]="birthDate | date" class="datepicker" name="datepicker" >
+          <input id="birthdate" active type="date" [ngModel]="birthDate | date" class="datepicker" name="datepicker" >
           <label class="active" for="birthDate">Employee's Birthdate</label>
         </div>
       </div>
@@ -48,7 +48,7 @@
     <div class="row">
             <div class="card-panel teal lighten-2 col s6 m6 l6" *ngIf="employeeEdited" >{{info}}</div>
 
-            <button [disabled]="employeeEdited"  class="btn waves-effect waves-light right" type="submit" name="action" (click)="updateEmployee()">Save Changes
+            <button  class="btn waves-effect waves-light right" type="submit" name="action" (click)="updateEmployee()">Save Changes
                 <i class="material-icons right">send</i>
             </button>
             <a md-button class="btn right" (click)="goBack()"><i class="material-icons left">keyboard_return</i>Back</a>

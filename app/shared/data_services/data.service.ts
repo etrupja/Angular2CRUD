@@ -6,18 +6,19 @@ import { Observable } from 'rxjs/Observable';
 import {Observer} from 'rxjs/Observer';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
 
 import { 
     IEmployee, 
     IDepartment, 
     IContract,
-    Department,
-    Employee
-                } from '../interfaces';
+    IPosition} from '../interfaces';
 import { ConfigService } from '../api_settings/config.service';
 
 @Injectable()
 export class DataService {
+
+    private headers = new Headers({'Content-Type': 'application/json'});
 
     _baseUrl: string = '';
 
@@ -71,7 +72,7 @@ export class DataService {
     }
 
 //updates a department
-    updateDepartment(department: Department): Observable<void> {
+    updateDepartment(department: IDepartment): Observable<void> {
 
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
@@ -114,17 +115,23 @@ getEmployee(id: number): Observable<IEmployee> {
     }
 
     //create a new Employee
-createEmployee(employee: IEmployee): Observable<IEmployee> {
+createEmployee(firstName:string, lastName:string, birthDate:Date, jobPosition:any, departmentId:number): Promise<IEmployee> {
 
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    console.log(firstName);
+    console.log(lastName);
+    console.log(birthDate);
+    console.log(jobPosition);
+    console.log(departmentId);
 
-    return this.http.post(this._baseUrl + 'employee/', JSON.stringify(employee), {
-        headers: headers
-    })
-        .map((res: Response) => {
-            return res.json();
-        })
+    let body = JSON.stringify({firstName:firstName, 
+                                            lastName:lastName, 
+                                            birthDate:birthDate, 
+                                            jobPosition:jobPosition, 
+                                            departmentId:departmentId});
+
+    return this.http.post(this._baseUrl + 'employee/', body, {headers: this.headers })
+        .toPromise()
+        .then(res => res.json().data as IEmployee)
         .catch(this.handleError);
 }
 
@@ -214,7 +221,18 @@ createContract(contract: IContract): Observable<IContract> {
 
 
 
+//get all jobPositions
 
+getJobPositions(){
+    let positions:IPosition[] = [
+      {name: 'Trainee', description: 'Trainee'},
+      {name: 'Junior', description: 'Junior'},
+      {name: 'Senior', description: 'Senior'},
+      {name: 'Expert', description: 'Expert'},
+      {name: 'Manager', description: 'Manager'}
+    ];
+    return positions;
+  }
 
 
 

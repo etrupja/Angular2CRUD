@@ -4,7 +4,7 @@
     <form #form="ngForm" class="col s12" novalidate>
       <div class="row">
         <div class="input-field col s6 m6">
-          <input [disabled]="contractEdited" id="name" type="text" class="form-control validate" name="name" [(ngModel)]="name">
+          <input id="name" type="text" class="form-control validate" name="name" [(ngModel)]="name">
           <label class="active" for="name">Contract name</label>
         </div>
       </div>
@@ -18,18 +18,18 @@
             <label  class="active" for="department">Employee</label>    
         </div>
         <div  class="input-field col s6 m6">
-          <input [disabled]="contractEdited" id="amount" type="number" class="form-control validate" name="amount" [(ngModel)]="amount"  >
+          <input  id="amount" type="number" class="form-control validate" name="amount" [(ngModel)]="amount"  >
           <label class="active" for="amount">Annual gross amount</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s6 m6">
-          <input [disabled]="contractEdited" id="startDate" active type="date" [ngModel]="startDate | date" class="datepicker" name="st" >
+          <input id="startDate" active type="date" [ngModel]="startDate | date" class="datepicker" name="st" >
           <label class="active"  for="startDate">Contract's Start Date</label>
         </div>
         <div class="input-field col s6 m6">
-          <input [disabled]="contractEdited" id="endDate" active type="date" [ngModel]="endDate | date" class="datepicker" name="ed" >
+          <input id="endDate" active type="date" [ngModel]="endDate | date" class="datepicker" name="ed" >
           <label class="active" for="endDate">Contract's End Date</label>
         </div>
       </div>
@@ -37,7 +37,7 @@
 
     <div class="row">
             <div class="card-panel teal lighten-2 col s6 m6 l6" *ngIf="contractEdited" >{{info}}</div>
-            <button [disabled]="contractEdited" class="btn waves-effect waves-light right" type="submit" name="action" (click)="updateContract()">Save Changes
+            <button class="btn waves-effect waves-light right" type="submit" name="action" (click)="updateContract()">Save Changes
                 <i class="material-icons right">send</i>
             </button>
             <a md-button class="btn right waves-effect waves-light" (click)="goBack()"><i class="material-icons left">keyboard_return</i>Back</a>

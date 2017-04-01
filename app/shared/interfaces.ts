@@ -25,3 +25,8 @@ export interface IContract{
     employeeId:number;
     employee?:string
 }
+
+export interface IPosition{
+    name:string,
+    description:string;
+}
