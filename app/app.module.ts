@@ -24,30 +24,6 @@ import {ContractEmployeeDetailsComponent} from './contracts/contract-employee-de
 import {ContractNewComponent} from './contracts/contract-new.component'
 import {ContractEditComponent} from './contracts/contract-edit.component'
 
-
-import {MdCardModule} from '@angular2-material/card'
-import {MdButtonModule} from '@angular2-material/button'
-import {MdIconModule} from '@angular2-material/icon'
-import {MdMenuModule} from '@angular2-material/menu'
-import {MdButtonToggleModule} from '@angular2-material/button-toggle'
-import {MdCheckboxModule} from '@angular2-material/checkbox'
-import {MdGridListModule} from '@angular2-material/grid-list';
-import {MdInputModule} from '@angular2-material/input';
-import {MdListModule} from '@angular2-material/list';
-import {MdProgressBarModule} from '@angular2-material/progress-bar';
-import {MdProgressCircleModule} from '@angular2-material/progress-circle';
-import {MdRadioModule} from '@angular2-material/radio';
-import {MdSidenavModule} from '@angular2-material/sidenav';
-import {MdSliderModule} from '@angular2-material/slider';
-import {MdSlideToggleModule} from '@angular2-material/slide-toggle';
-import {MdTabsModule} from '@angular2-material/tabs';
-import {MdToolbarModule} from '@angular2-material/toolbar';
-import {MdTooltipModule} from '@angular2-material/tooltip';
-import {MdIconRegistry} from '@angular2-material/icon';
-
-//Select module
-import {SelectModule} from 'angular2-select';
-
 //Importing my services
 import { DataService } from './shared/data_services/data.service';
 import { ConfigService } from './shared/api_settings/config.service';
@@ -56,11 +32,9 @@ import { ConfigService } from './shared/api_settings/config.service';
 import {routing} from './app.routes';
 
 @NgModule({
-  imports:      [ 
+  imports:[ 
     BrowserModule, 
-    MdCardModule, MdButtonModule, MdIconModule,MdMenuModule,MdButtonToggleModule,MdCheckboxModule,MdGridListModule,MdInputModule,MdListModule,MdProgressBarModule,
-    MdProgressCircleModule,MdRadioModule,MdSidenavModule,MdSliderModule,MdSlideToggleModule,MdTabsModule,MdToolbarModule,MdTooltipModule,
-    FormsModule,SelectModule,
+    FormsModule,
     HttpModule,
     routing
    ],
@@ -72,7 +46,7 @@ import {routing} from './app.routes';
     ContractsComponent,ContractEmployeeDetailsComponent,ContractNewComponent,ContractEditComponent,
     ],
   bootstrap:    [ AppComponent ],
-  providers:[MdIconRegistry, DataService,ConfigService]
+  providers:[DataService,ConfigService]
 })
 
 export class AppModule { }

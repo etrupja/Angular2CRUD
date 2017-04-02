@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit,Input } from '@angular/core';
+import { Router, ActivatedRoute,Params } from '@angular/router';
 import {IDepartment} from '../shared/interfaces';
 import { DataService } from '../shared/data_services/data.service';
 import { Location } from '@angular/common';
@@ -15,8 +15,12 @@ export class DepartmentEditComponent implements OnInit {
      name:string;
      description: string;
      department:IDepartment;
+     _mydepartment:IDepartment;
      info:string = '';
      departmentEdited:boolean = false;
+
+
+     @Input() myDepartment: IDepartment;
     
     constructor(private dataService: DataService,
                 private route: ActivatedRoute,
@@ -29,15 +33,24 @@ export class DepartmentEditComponent implements OnInit {
 
     ngOnInit() {
         this.id = +this.route.snapshot.params['id'];
-        this.dataService.getDepartment(this.id).subscribe((department:IDepartment) => {
+        
+        // this.route.params
+        //     .switchMap((params: Params) => this.dataService.getDepartment(this.id))
+        //     .subscribe(department => {
+        //             this._mydepartment = department
+        //             alert(JSON.stringify(this._mydepartment));
+        //     });
 
+
+        this.dataService.getDepartment(this.id).subscribe((department:IDepartment) => {
+            this._mydepartment = department;
+            console.log(JSON.stringify(this._mydepartment));
+            
             this.name = department.name;
             this.description = department.description;
 
-            Materialize.toast('Department loaded', 3000, 'green rounded')
         },
         error => {
-            Materialize.toast('Department load failed', 3000, 'red rounded')
             console.log('Failed while trying to load the department. '+error);
         });
      }
@@ -50,10 +63,8 @@ export class DepartmentEditComponent implements OnInit {
                 this.departmentEdited = true;
                 console.log('Department was updated successfully. ');
                 this.info = 'Department '+this.department.name+ ' was edited successfully!';
-                Materialize.toast('Department updated', 3000, 'green rounded')
             },
             error => {
-                Materialize.toast('Department update failed', 3000, 'red rounded')
                 console.log('Failed while trying to update the department. '+error);
             });
 
