@@ -57,18 +57,14 @@ export class DataService {
     }
     
 //create a new Department
-    createDepartment(department: IDepartment): Observable<IDepartment> {
-
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        return this.http.post(this._baseUrl + 'department/', JSON.stringify(department), {
-            headers: headers
-        })
-            .map((res: Response) => {
-                return res.json();
-            })
-            .catch(this.handleError);
+    createDepartment(name:string, description:string): Promise<IDepartment> {
+        let body = JSON.stringify({name:name, 
+                                description:description});
+        
+        return this.http.post(this._baseUrl+'department/', body, {headers:this.headers})
+                .toPromise()
+                .then(res=>res.json().data as IDepartment)
+                .catch(this.handleError)
     }
 
 //updates a department
@@ -217,16 +213,16 @@ createContract(name:string, startDate:Date, endDate:Date,amount:number, employee
 
 //get all jobPositions
 
-getJobPositions(){
-    let positions:IPosition[] = [
-      {name: 'Trainee', description: 'Trainee'},
-      {name: 'Junior', description: 'Junior'},
-      {name: 'Senior', description: 'Senior'},
-      {name: 'Expert', description: 'Expert'},
-      {name: 'Manager', description: 'Manager'}
-    ];
-    return positions;
-  }
+    getJobPositions(){
+        let positions:IPosition[] = [
+        {name: 'Trainee', description: 'Trainee'},
+        {name: 'Junior', description: 'Junior'},
+        {name: 'Senior', description: 'Senior'},
+        {name: 'Expert', description: 'Expert'},
+        {name: 'Manager', description: 'Manager'}
+        ];
+        return positions;
+    }
 
 
 

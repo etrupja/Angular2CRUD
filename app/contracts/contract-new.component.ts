@@ -13,9 +13,6 @@ import { Location } from '@angular/common';
 export class ContractNewComponent implements OnInit {
     
     contract: IContract; //Object that will be sent to API
-    contracts:IContract[];
-    info:string = '';
-    contractCreated:boolean =false;
 
     //Drop downs
     employees: IEmployee[];
@@ -39,8 +36,8 @@ export class ContractNewComponent implements OnInit {
      }
 
      newContract(name:string, startDate:Date, endDate:Date,amount:number, employeeId:number){
-         this.dataService.createContract(name, startDate, endDate,amount, employeeId).then(ctr => {
-            this.contracts.push(ctr);
-        });
+         this.dataService.createContract(name, startDate, endDate,amount, employeeId).then(
+             (ctr) =>{ console.log(ctr);}, 
+             (error) => console.log(error))
      }
 }
